@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:52:10 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 17:58:55 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:57:51 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 void	*ft_calloc(size_t n, size_t size)
 {

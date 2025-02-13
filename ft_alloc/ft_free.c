@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 11:17:59 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:00:07 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:57:55 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 void	ft_free(void *ptr)
 {

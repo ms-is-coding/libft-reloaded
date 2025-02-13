@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:45:32 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:03:18 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 19:44:53 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 size_t	ft_strnlen(const char *s, size_t n)
 {

@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:14:50 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:02:49 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 19:02:12 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 char	*ft_strdup(const char *s)
 {

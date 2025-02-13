@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 13:20:36 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:04:52 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 19:02:02 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 int	ft_toupper(int c)
 {

@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:37:29 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:02:37 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:59:31 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 char	*ft_stpncpy(char *dst, const char *src, size_t dsize)
 {

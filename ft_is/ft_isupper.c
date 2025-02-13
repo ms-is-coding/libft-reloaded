@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:14:28 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:01:37 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:58:52 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 bool	ft_isupper(unsigned char c)
 {

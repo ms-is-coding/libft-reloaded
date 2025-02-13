@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 01:22:27 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:01:40 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:58:57 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 bool	ft_isxdigit(unsigned char c)
 {

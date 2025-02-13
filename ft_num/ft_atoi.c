@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:37:47 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:02:28 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:59:23 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 int	ft_atoi(const char *s)
 {

@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:55:37 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:02:53 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 19:02:15 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dsize)
 {

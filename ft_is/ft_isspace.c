@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 01:19:44 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:01:34 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:58:48 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 bool	ft_isspace(unsigned char c)
 {

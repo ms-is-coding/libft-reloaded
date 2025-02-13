@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:50:12 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:01:15 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:58:24 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 bool	ft_iscntrl(unsigned char c)
 {

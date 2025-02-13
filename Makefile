@@ -6,7 +6,7 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/06 23:24:42 by smamalig          #+#    #+#              #
-#    Updated: 2025/02/08 19:27:31 by smamalig         ###   ########.fr        #
+#    Updated: 2025/02/13 18:54:16 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ SRCS		= $(shell find . -type f -name '*.c' ! -name '*_bonus.c')
 BONUS		= $(shell find . -type f -name '*_bonus.c')
 OBJS		= $(SRCS:.c=.o)
 BONUS_OBJS	= $(BONUS:.c=.o)
-INCLUDES	= .
-HEADER		= $(INCLUDES)/libft.h
+INCLUDES	= include/
+HEADER		= include/libft.h
 
 TEST_SRCS	= $(shell find . -type f -name '*.cpp')
 TEST_OBJS	= $(TEST_SRCS:.cpp=.o)

@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 14:37:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:01:00 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:58:01 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 {

@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:34:37 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:01:57 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:57:26 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 char	*ft_substr(const char *s, size_t start, size_t size)
 {
