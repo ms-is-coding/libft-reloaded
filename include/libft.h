@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/12 18:12:15 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:03:11 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stddef.h>
 # include <stdint.h>
 # include <stdlib.h>
-# include <errno.h>
+# include <unistd.h>
 
 bool		ft_isalpha(unsigned char c);
 bool		ft_isalnum(unsigned char c);
@@ -92,7 +92,7 @@ char		*ft_itoa(int n);
 char		*ft_strmapi(const char *s, char (*f)(size_t, char));
 void		ft_striteri(char *s, void (*f)(size_t, char *));
 
-void		ft_putchar_ft(char c, int fd);
+void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(const char *s, int fd);
 void		ft_putendl_fd(const char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);

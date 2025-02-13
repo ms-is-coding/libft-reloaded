@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 13:52:10 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/13 20:03:24 by smamalig         ###   ########.fr       */
+/*   Created: 2025/02/09 16:53:48 by smamalig          #+#    #+#             */
+/*   Updated: 2025/02/10 21:07:00 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <errno.h>
 
-void	*ft_calloc(size_t n, size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	bool	overflow;
-	void	*ptr;
+	char	buffer[10];
+	int		pos;
 
-	overflow = (size != 0) && (n > SIZE_MAX / size);
-	if (overflow)
+	pos = 9;
+	if (n == 0)
 	{
-		errno = EOVERFLOW;
-		return (NULL);
+		ft_putchar_fd('0', fd);
+		return ;
 	}
-	ptr = ft_malloc(n * size);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, n * size);
-	return (ptr);
+	else if (n < 0)
+		ft_putchar_fd('-', fd);
+	while (n)
+	{
+		if (n < 0)
+			buffer[pos--] = -(n % 10) + '0';
+		else
+			buffer[pos--] = n % 10 + '0';
+		n /= 10;
+	}
+	write(fd, buffer + pos + 1, 9 - pos);
 }
