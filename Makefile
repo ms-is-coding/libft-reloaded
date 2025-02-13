@@ -6,7 +6,7 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/02/13 22:40:48 by smamalig         ###   ########.fr        #
+#    Updated: 2025/02/13 22:41:37 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
-	@printf "$(GREEN)✅ Successfully built $(NAME)!$(RESET)\n\n"
+	@printf "$(GREEN)Successfully built $(NAME)!$(RESET)\n\n"
 
 %.o: %.c $(HEADER)
 	@printf "$(MAGENTA)Compiling$(RESET) $<       \n"
@@ -49,11 +49,11 @@ $(NAME): $(OBJS)
 	@$(CPP) $(INCLUDES) -c $< -o $@
 
 clean:
-	@printf "$(RED)🧹 Cleaning object files...$(RESET)\n"
+	@printf "$(RED)Cleaning object files...$(RESET)\n"
 	@rm -rf $(OBJS)
 
 fclean: clean
-	@printf "$(RED)🔥 Full clean...$(RESET)\n"
+	@printf "$(RED)Full clean...$(RESET)\n"
 	@rm -f $(NAME)
 
 re: fclean all
