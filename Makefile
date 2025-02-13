@@ -6,7 +6,7 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/02/13 22:46:15 by smamalig         ###   ########.fr        #
+#    Updated: 2025/02/13 22:51:35 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,24 +31,25 @@ RESET       = \033[0m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@printf "$(YELLOW)Building $(NAME)...$(RESET)\n"
+	@printf "$(BLUE)%12s$(RESET): $(YELLOW)Building $(NAME)...$(RESET)\n" $(NAME)
 	@ar rcs $(NAME) $(OBJS)
-	@printf "$(GREEN)Successfully built $(NAME)$(RESET)\n"
+	@printf "$(BLUE)%12s$(RESET): $(GREEN)Successfully built $(NAME)$(RESET)\n" $(NAME)
 
 %.o: %.c $(HEADER)
-	@printf "$(MAGENTA)Compiling$(RESET) $<\n"
+	@printf "$(BLUE)%12s$(RESET): $(MAGENTA)Compiling$(RESET) $<\n" $(NAME)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 %.o: %.cpp $(HEADER)
-	@printf "$(MAGENTA)Compiling$(RESET) $<\n"
+	$(pre_msg)
+	@printf "$(BLUE)%12s$(RESET): $(MAGENTA)Compiling$(RESET) $<\n" $(NAME)
 	@$(CPP) $(INCLUDES) -c $< -o $@
 
 clean:
-	@printf "$(RED)Cleaning object files...$(RESET)\n"
+	@printf "$(BLUE)%12s$(RESET): $(RED)Cleaning object files...$(RESET)\n" $(NAME)
 	@rm -rf $(OBJS)
 
 fclean: clean
-	@printf "$(RED)Full clean...$(RESET)\n"
+	@printf "$(BLUE)%12s$(RESET): $(RED)Full clean...$(RESET)\n" $(NAME)
 	@rm -f $(NAME)
 
 re: fclean all
