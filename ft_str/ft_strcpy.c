@@ -1,0 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/09 13:14:57 by smamalig          #+#    #+#             */
+/*   Updated: 2025/02/12 18:02:46 by smamalig         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../libft.h"
+
+char	*ft_strcpy(char *dst, const char *src)
+{
+	char	*cpy;
+
+	if (!dst || !src)
+		return (dst);
+	cpy = dst;
+	while (*src)
+		*dst++ = *src++;
+	*dst = '\0';
+	return (cpy);
+}
