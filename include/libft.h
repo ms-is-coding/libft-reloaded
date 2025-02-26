@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/13 20:03:11 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/25 14:53:13 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,45 @@
 # include <stddef.h>
 # include <stdint.h>
 # include <stdlib.h>
+# include <stdarg.h>
 # include <unistd.h>
 
-bool		ft_isalpha(unsigned char c);
+# define FT_PI 3.141592653589793
+
+/**********/
+/* Checks */
+/**********/
 bool		ft_isalnum(unsigned char c);
-bool		ft_isdigit(unsigned char c);
+bool		ft_isalpha(unsigned char c);
 bool		ft_isascii(unsigned char c);
-bool		ft_isprint(unsigned char c);
+bool		ft_isblank(unsigned char c);
 bool		ft_iscntrl(unsigned char c);
+bool		ft_isdigit(unsigned char c);
 bool		ft_isgraph(unsigned char c);
 bool		ft_islower(unsigned char c);
+bool		ft_isprint(unsigned char c);
 bool		ft_ispunct(unsigned char c);
 bool		ft_isspace(unsigned char c);
 bool		ft_isupper(unsigned char c);
 bool		ft_isxdigit(unsigned char c);
-bool		ft_isblank(unsigned char c);
 
 int			ft_toupper(int c);
 int			ft_tolower(int c);
 
+int			ft_abs(int n);
+int			ft_max(int a, int b);
+int			ft_min(int a, int b);
+int			ft_nmax(int n, ...);
+int			ft_nmin(int n, ...);
+int			ft_intlen(int n);
+
+void		*ft_memccpy(void *dst, const void *src, int c, size_t n);
+void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
-void		*ft_memset(void *s, int c, size_t n);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
 void		*ft_memmove(void *dst, const void *src, size_t n);
-void		*ft_memchr(const void *s, int c, size_t n);
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void		*ft_mempcpy(void *dst, const void *src, size_t n);
+void		*ft_memset(void *s, int c, size_t n);
 
 char		*ft_stpcpy(char *dst, const char *src);
 char		*ft_stpncpy(char *dst, const char *src, size_t n);
@@ -72,8 +85,14 @@ size_t		ft_strspn(const char *s, const char *accept);
 size_t		ft_strxfrm(char *dst, const char *src, size_t n);
 
 int			ft_atoi(const char *nptr);
+int			ft_atoi_safe(const char *nptr);
+int			ft_atoi_strict(const char *nptr);
 long		ft_atol(const char *nptr);
+long		ft_atol_safe(const char *nptr);
+long		ft_atol_strict(const char *nptr);
 long long	ft_atoll(const char *nptr);
+long long	ft_atoll_safe(const char *nptr);
+long long	ft_atoll_strict(const char *nptr);
 
 void		ft_free(void *ptr);
 void		*ft_malloc(size_t size);
@@ -99,25 +118,29 @@ void		ft_putnbr_fd(int n, int fd);
 
 typedef struct s_list
 {
-	void			*content;
+	void			*data;
 	struct s_list	*next;
 }	t_list;
 
 int			ft_list_size(t_list *list);
-t_list		*ft_list_new(void *content);
+t_list		*ft_list_new(void *data);
 t_list		*ft_list_last(t_list *list);
 void		ft_list_pushfront(t_list **ptr, t_list *el);
 void		ft_list_pushback(t_list **ptr, t_list *el);
 void		ft_list_delete(t_list *el, void (*del)(void *));
 void		ft_list_clear(t_list **ptr, void (*del)(void *));
-void		ft_list_foreach(t_list list, void (*f)(void *));
-t_list		*ft_list_map(t_list list, void *(*f)(void *), void (*del)(void *));
+void		ft_list_foreach(t_list *list, void (*f)(void *));
+t_list		*ft_list_map(t_list *list, void *(*f)(void *));
+void		ft_list_remove_if(t_list **ptr, void *ref, int (*cmp)(void *, void *), void (*free_data)(void *));
 
-/***********************/
-/* <stdio.h> functions */
-/***********************/
+int			ft_printf(const char *fmt, ...);
+int			ft_dprintf(int fd, const char *fmt, ...);
+int			ft_sprintf(char *dst, const char *fmt, ...);
+int			ft_snprintf(char *dst, size_t size, const char *fmt, ...);
 
-int			printf(const char *fmt, ...);
-int			dprintf(int fd, const char *fmt, ...);
+int			ft_vprintf(const char *fmt, va_list ap);
+int			ft_vdprintf(int fd, const char *fmt, va_list ap);
+int			ft_vsprintf(char *dst, const char *fmt, va_list ap);
+int			ft_vsnprintf(char *dst, size_t size, const char *fmt, va_list ap);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/02/14 02:53:56 by smamalig         ###   ########.fr        #
+#    Updated: 2025/02/23 15:52:21 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,14 @@ NAME        = libft.a
 CC          = cc
 CPP			= c++
 CFLAGS      = -Wall -Wextra -Werror -O3
-SRCS        = $(shell find . -type f -name '*.c')
-TEST_SRCS	= $(shell find . -type f -name '*.cpp')
-OBJS        = $(SRCS:%.c=%.o)
-TEST_OBJS	= $(TEST_SRCS:%.cpp=%.o)
+SRCS        = $(shell find src -type f -name '*.c')
+TEST_SRCS	= $(shell find tests -type f -name '*.cpp')
+OBJ_DIR		= obj
+OBJS        = $(patsubst src/%.c, ${OBJ_DIR}/%.o, $(SRCS))
+TEST_OBJS   = $(patsubst tests/%.cpp, $(OBJ_DIR)/%.o, $(TEST_SRCS))
 INCLUDES    = -Iinclude
 HEADER      = include/libft.h
+LIBS		= -lbsd
 
 # Colors
 RED         = \033[0;31m
@@ -37,23 +39,27 @@ $(NAME): $(OBJS)
 	@printf "$(BOLD)$(BLUE)%12s$(RESET): $(YELLOW)Building$(RESET) $(NAME)\n" $(NAME)
 	@ar rcs $(NAME) $(OBJS)
 
-%.o: %.c $(HEADER)
+$(OBJ_DIR)/%.o: src/%.c $(HEADER)
+	@mkdir -p $(dir $@)
 	@printf "$(BLUE)%12s$(RESET): $(MAGENTA)Compiling$(RESET) $<\n" $(NAME)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-%.o: %.cpp $(HEADER)
+$(OBJ_DIR)/%.o: tests/%.cpp $(HEADER)
 	@printf "$(BLUE)%12s$(RESET): $(MAGENTA)Compiling$(RESET) $<\n" $(NAME)
 	@$(CPP) $(INCLUDES) -c $< -o $@
 
+norm:
+	@-norminette | grep -v "OK"
+
 test: $(OBJS) $(TEST_OBJS) $(HEADER)
-	@$(CPP) $(TEST_OBJS) $(OBJS) -o test
+	@$(CPP) $(TEST_OBJS) $(OBJS) $(LIBS) -o test
 	@printf "$(BOLD)$(BLUE)%12s$(RESET): $(CYAN)Running$(RESET) $(NAME)\n" $(NAME)
 	@./test
 	@rm test
 
 clean:
 	@printf "$(BOLD)$(BLUE)%12s$(RESET): $(RED)Removing$(RESET) object files\n" $(NAME)
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
 	@printf "$(BOLD)$(BLUE)%12s$(RESET): $(RED)Removing$(RESET) executables and libraries\n" $(NAME)
@@ -61,4 +67,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re libft header
+.PHONY: all clean fclean re norm
