@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/03/19 15:29:59 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:17:25 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ void		*ft_calloc(size_t n, size_t size);
 void		ft_free(void *ptr);
 void		*ft_malloc(size_t size);
 void		*ft_realloc(void *ptr, size_t old_size, size_t new_size);
+
+/* ************************************************************************** */
+/* TIME                                                                       */
+/* ************************************************************************** */
+
+int			ft_sleep(unsigned int seconds);
+int			ft_usleep(__useconds_t microseconds);
 
 /* ************************************************************************** */
 /* CHECKS                                                                     */
@@ -138,6 +145,7 @@ void		ft_striteri(char *s, void (*f)(size_t, char *));
 /* ************************************************************************** */
 /* LINKED LIST                                                                */
 /* ************************************************************************** */
+
 typedef struct s_list
 {
 	void			*data;
@@ -160,6 +168,7 @@ void		ft_list_remove_if(t_list **ptr, void *ref,
 /* ************************************************************************** */
 /* PRINTF                                                                     */
 /* ************************************************************************** */
+
 int			ft_printf(const char *fmt, ...);
 int			ft_dprintf(int fd, const char *fmt, ...);
 int			ft_sprintf(char *dst, const char *fmt, ...);
@@ -177,24 +186,5 @@ int			ft_vsnprintf(char *dst, size_t size, const char *fmt, va_list ap);
 /* ************************************************************************** */
 /* HASHMAP                                                                    */
 /* ************************************************************************** */
-
-# ifdef LIBFT_OVERRIDE_GLIBC
-
-# define malloc ft_malloc
-# define free ft_free
-# define calloc ft_calloc
-# define strdup ft_strdup
-# define strcmp ft_strcmp
-
-# define printf ft_printf
-# define dprintf ft_dprintf
-# define sprintf ft_sprintf
-# define snprintf ft_snprintf
-# define vprintf ft_vprintf
-# define vdprintf ft_vdprintf
-# define vsprintf ft_vsprintf
-# defint vsnprintf ft_vsnprintf
-
-# endif // LIBFT_OVERRIDE_GLIBC
 
 #endif
