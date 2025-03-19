@@ -6,15 +6,13 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 01:22:27 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/18 12:52:11 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/03/06 20:03:12 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_isxdigit(unsigned char c)
+int	ft_isxdigit(int c)
 {
-	return (ft_isdigit(c)
-		|| (c >= 'a' && c <= 'f')
-		|| (c >= 'A' && c <= 'F'));
+	return (ft_isdigit(c) | (((c | 0x20) + 0x9F) ^ ((c | 0x20) + 0x99)) >> 8);
 }

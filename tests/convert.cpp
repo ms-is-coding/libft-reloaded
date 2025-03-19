@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:28:19 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/25 14:33:22 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:25:50 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,13 @@ void test_convert() {
 			INT_MAX, INT_MAX-1, INT_MAX, INT_MAX/2, INT_MAX
 		};
 		for (size_t i = 0; i < sizeof(tests) / sizeof(char *); i++) {
+			errno = 0;
 			ExpectResult expect = expect_eq(results[i], ft_atoi_safe(tests[i]), tests[i]);
 			if (expect.error)
 				res.push_back(expect);
 		}
 	});
-	printf("\n");
-	int test = ft_atoi_strict("2147483647");
-	printf("atoi_strict(INT_MAX): %i %m\n", test);
-	test = ft_atoi_strict("2147483648");
-	printf("atoi_strict(INT_MAX+1): %i %m\n", test);
+	// add atol and atoll !
 	// printf("%2$-*3$.*1$g|", 5, 123.456, 10);
 }
 

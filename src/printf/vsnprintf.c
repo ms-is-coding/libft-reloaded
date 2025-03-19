@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 16:31:49 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/25 23:00:51 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:24:47 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	ft_print_int(t_printf_parser *parser, int n)
 
 void	ft_print_strerror(t_printf_parser *parser)
 {
-	const char *err = strerror(errno);
+	const char	*err = strerror(errno);
+
 	while (*err)
 		ft_insert(parser, *err++);
 }

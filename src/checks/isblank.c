@@ -6,13 +6,13 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:39:27 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/13 18:58:21 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:43:45 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_isblank(unsigned char c)
+int	ft_isblank(int c)
 {
-	return (c == 9 || c == 32);
+	return ((c == 9) | (c == 32));
 }

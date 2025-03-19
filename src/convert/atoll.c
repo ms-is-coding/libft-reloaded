@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:37:47 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/25 13:57:59 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:50:57 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 long long	ft_atoll(const char *s)
 {
 	long long	value;
-	int	sign;
+	int			sign;
 
 	value = 0;
 	sign = 1;

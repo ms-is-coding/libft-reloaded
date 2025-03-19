@@ -6,13 +6,13 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:48:04 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/13 18:58:09 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:35:55 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_isalnum(unsigned char c)
+int	ft_isalnum(int c)
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
+	return (ft_isalpha(c) | ft_isdigit(c));
 }

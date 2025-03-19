@@ -6,13 +6,13 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:54:48 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/13 18:58:33 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:55:10 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_isgraph(unsigned char c)
+int	ft_isgraph(int c)
 {
-	return (c > 32 && c < 127);
+	return (((c + 0xDF) ^ (c + 0x81)) >> 8);
 }

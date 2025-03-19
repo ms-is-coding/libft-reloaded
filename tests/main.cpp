@@ -6,7 +6,7 @@
 /*   By: ms <smamalig@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 22:58:26 by ms                #+#    #+#             */
-/*   Updated: 2025/02/23 15:34:48 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:26:14 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int main() {
 	test_alloc();
 	test_checks();
 	test_convert();
-	// test_io();
-	// test_list();
+	test_io();
+	test_list();
 	test_math();
 	test_mem();
 	// test_str_compare();

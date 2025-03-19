@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isalpha.c                                          :+:      :+:    :+:   */
+/*   strpbrk.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 23:49:22 by smamalig          #+#    #+#             */
-/*   Updated: 2025/03/06 16:38:37 by smamalig         ###   ########.fr       */
+/*   Created: 2025/02/27 16:35:40 by smamalig          #+#    #+#             */
+/*   Updated: 2025/02/27 16:46:26 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strpbrk(const char *s, const char *accept)
 {
-	return (ft_islower(c) | ft_isupper(c));
+	if (!s || !accept)
+		return (NULL);
+	while (*s)
+	{
+		if (ft_strchr(accept, *s))
+			return ((char *)s);
+		s++;
+	}
+	return (NULL);
 }

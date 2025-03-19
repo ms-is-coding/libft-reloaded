@@ -6,13 +6,13 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 01:19:44 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/13 18:58:48 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/03/06 17:15:07 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_isspace(unsigned char c)
+int	ft_isspace(int c)
 {
-	return (c == 32 || (c >= 9 && c <= 13));
+	return ((c == 32) | (((c + 0xF7) ^ (c + 0xF2)) >> 8));
 }

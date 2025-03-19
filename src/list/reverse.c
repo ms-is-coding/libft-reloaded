@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isalpha.c                                          :+:      :+:    :+:   */
+/*   reverse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 23:49:22 by smamalig          #+#    #+#             */
-/*   Updated: 2025/03/06 16:38:37 by smamalig         ###   ########.fr       */
+/*   Created: 2025/02/26 20:20:48 by smamalig          #+#    #+#             */
+/*   Updated: 2025/02/26 20:20:56 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	ft_list_reverse(t_list **ptr)
 {
-	return (ft_islower(c) | ft_isupper(c));
+	t_list	*temp;
+	t_list	*list;
+	t_list	*prev;
+
+	prev = NULL;
+	if (!ptr)
+		return ;
+	list = *ptr;
+	while (list)
+	{
+		temp = list->next;
+		list->next = prev;
+		prev = list;
+		list = temp;
+	}
+	*ptr = prev;
 }

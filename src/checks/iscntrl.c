@@ -6,13 +6,13 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:50:12 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/13 18:58:24 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:58:01 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_iscntrl(unsigned char c)
+int	ft_iscntrl(int c)
 {
-	return (c < 32 || c == 127);
+	return ((c < 128) & !ft_isprint(c));
 }

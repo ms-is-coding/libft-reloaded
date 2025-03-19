@@ -6,13 +6,13 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 01:24:08 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/13 18:58:17 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:40:37 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_isascii(unsigned char c)
+int	ft_isascii(int c)
 {
 	return (!(c >> 7));
 }
