@@ -6,12 +6,12 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 16:13:26 by smamalig          #+#    #+#             */
-/*   Updated: 2025/03/24 22:13:51 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/03/24 22:27:39 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <syscall.h>
+#include <sys/syscall.h>
 
 static void	__ft_sleep(const struct timespec *t)
 {
