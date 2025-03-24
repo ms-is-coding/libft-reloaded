@@ -1,45 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sleep.c                                            :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 16:13:26 by smamalig          #+#    #+#             */
-/*   Updated: 2025/03/24 22:13:51 by smamalig         ###   ########.fr       */
+/*   Created: 2025/03/24 22:16:05 by smamalig          #+#    #+#             */
+/*   Updated: 2025/03/24 22:17:36 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <syscall.h>
 
-static void	__ft_sleep(const struct timespec *t)
+time_t	ft_time(timer_t *timer)
 {
+	time_t	result;
+
 	asm volatile (
 		"syscall"
-		:
-		: "a"(SYS_nanosleep), "D"(t), "S"(0)
+		: "=a"(result)
+		: "a"(SYS_time), "D"(timer)
 		: "rcx", "r11", "memory");
-}
-
-int	ft_usleep(__useconds_t us)
-{
-	const struct timespec	t = {
-		.tv_sec = us / 1000000,
-		.tv_nsec = (us % 1000000) * 1000
-	};
-
-	__ft_sleep(&t);
-	return (0);
-}
-
-int	ft_sleep(unsigned int seconds)
-{
-	const struct timespec	t = {
-		.tv_sec = seconds,
-		.tv_nsec = 0
-	};
-
-	__ft_sleep(&t);
-	return (0);
+	return (result);
 }
