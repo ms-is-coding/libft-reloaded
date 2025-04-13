@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/03/25 15:47:11 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/04/13 12:25:51 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@
 # include <stdarg.h>
 # include <time.h>
 # include <unistd.h>
+
+typedef unsigned int	t_u32;
+
+typedef struct s_random
+{
+	unsigned int	data;
+	unsigned int	seed;
+}	t_random;
 
 /* ************************************************************************** */
 /* ALLOC                                                                      */
@@ -42,7 +50,8 @@ time_t		ft_time(timer_t *timer);
 /* RANDOM                                                                     */
 /* ************************************************************************** */
 
-int			ft_rand(unsigned int seed);
+t_random	ft_srand(t_u32 seed);
+t_u32		ft_rand(t_random *rand);
 
 /* ************************************************************************** */
 /* CHECKS                                                                     */
