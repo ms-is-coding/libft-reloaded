@@ -6,14 +6,14 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/03/24 22:15:38 by smamalig         ###   ########.fr        #
+#    Updated: 2025/04/06 23:56:50 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = libft.a
 CC          = cc
 CPP         = c++
-CFLAGS      = -Wall -Wextra -Werror -O3 -g3
+CFLAGS      = -Wall -Wextra -Werror -O3
 SRCS        = $(shell find src -type f -name '*.c')
 TEST_SRCS   = $(shell find tests -type f -name '*.cpp')
 OBJ_DIR     = obj
@@ -24,28 +24,27 @@ HEADER      = include/libft.h
 LIBS        = -lbsd
 
 # Colors
-RED         = \033[0;31m
-GREEN       = \033[0;32m
-YELLOW      = \033[0;33m
-BLUE        = \033[0;34m
-MAGENTA     = \033[0;35m
-CYAN        = \033[0;36m
-BOLD        = \033[1m
-RESET       = \033[0m
+RED         = \e[31m
+GREEN       = \e[32m
+YELLOW      = \e[33m
+BLUE        = \e[34m
+MAGENTA     = \e[35m
+CYAN        = \e[36m
+RESET       = \e[m
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@printf "$(BOLD)$(BLUE)%12s$(RESET): $(YELLOW)Building$(RESET) $(NAME)\n" $(NAME)
+	@printf "$(BLUE)%s$(RESET): $(YELLOW)Building$(RESET) $(NAME)\n" $(NAME)
 	@ar rcs $(NAME) $(OBJS)
 
 $(OBJ_DIR)/%.o: src/%.c $(HEADER)
 	@mkdir -p $(dir $@)
-	@printf "$(BLUE)%12s$(RESET): $(MAGENTA)Compiling$(RESET) $<\n" $(NAME)
+	@printf "$(BLUE)%s$(RESET): $(MAGENTA)Compiling$(RESET) $<\n" $(NAME)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJ_DIR)/%.o: tests/%.cpp $(HEADER)
-	@printf "$(BLUE)%12s$(RESET): $(MAGENTA)Compiling$(RESET) $<\n" $(NAME)
+	@printf "$(BLUE)%s$(RESET): $(MAGENTA)Compiling$(RESET) $<\n" $(NAME)
 	@$(CPP) $(INCLUDES) -c $< -o $@
 
 norm:
@@ -53,15 +52,15 @@ norm:
 
 test: $(OBJS) $(TEST_OBJS) $(HEADER)
 	@$(CPP) $(TEST_OBJS) $(OBJS) $(LIBS)
-	@printf "$(BOLD)$(BLUE)%12s$(RESET): $(CYAN)Running$(RESET) $(NAME)\n" $(NAME)
+	@printf "$(BLUE)%s$(RESET): $(CYAN)Running$(RESET) $(NAME)\n" $(NAME)
 	@./a.out
 
 clean:
-	@printf "$(BOLD)$(BLUE)%12s$(RESET): $(RED)Removing$(RESET) object files\n" $(NAME)
+	@printf "$(BLUE)%s$(RESET): $(RED)Removing$(RESET) object files\n" $(NAME)
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@printf "$(BOLD)$(BLUE)%12s$(RESET): $(RED)Removing$(RESET) executables and libraries\n" $(NAME)
+	@printf "$(BLUE)%s$(RESET): $(RED)Removing$(RESET) executables and libraries\n" $(NAME)
 	@rm -f $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/04/13 12:25:51 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/04/14 00:40:50 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@
 
 typedef unsigned int	t_u32;
 
-typedef struct s_random
+typedef struct s_rng
 {
-	unsigned int	data;
-	unsigned int	seed;
-}	t_random;
+	t_u32	state[4];
+	t_u32	seed;
+	t_u32	hash;
+}	t_rng;
 
 /* ************************************************************************** */
 /* ALLOC                                                                      */
@@ -50,8 +51,8 @@ time_t		ft_time(timer_t *timer);
 /* RANDOM                                                                     */
 /* ************************************************************************** */
 
-t_random	ft_srand(t_u32 seed);
-t_u32		ft_rand(t_random *rand);
+t_rng		ft_rng_seed(t_u32 seed);
+t_u32		ft_rng_next(t_rng *rng);
 
 /* ************************************************************************** */
 /* CHECKS                                                                     */
