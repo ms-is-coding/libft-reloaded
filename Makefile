@@ -6,13 +6,13 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/04/06 23:56:50 by smamalig         ###   ########.fr        #
+#    Updated: 2025/04/14 10:43:54 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = libft.a
-CC          = cc
-CPP         = c++
+CC          = clang
+CPP         = clang++
 CFLAGS      = -Wall -Wextra -Werror -O3
 SRCS        = $(shell find src -type f -name '*.c')
 TEST_SRCS   = $(shell find tests -type f -name '*.cpp')
