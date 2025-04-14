@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 01:35:01 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/22 23:35:00 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:09:59 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ t_list	*ft_list_new(void *data)
 	if (!list)
 		return (NULL);
 	list->data = data;
+	list->next = NULL;
 	return (list);
 }

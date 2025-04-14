@@ -6,40 +6,41 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:45:37 by smamalig          #+#    #+#             */
-/*   Updated: 2025/04/14 00:44:09 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/04/14 22:50:01 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#define PHI 0x9e3779b9
-
-t_rng	ft_rng_init(t_u32 seed)
+static inline t_u64	rol64(t_u64 x, int k)
 {
-	return ((t_rng){
-		.state = {
-			0xdeadbeef ^ seed,
-			0x12345678 ^ (seed * PHI),
-			0x87654321 ^ (~seed),
-			seed ^ (seed >> 16)
-		},
-		.seed = seed,
-		.hash = 0
-	});
+	return ((x << k) | (x >> (64 - k)));
 }
 
-t_u32	ft_rng_next(t_rng *r)
+t_u64	ft_rng_u64(t_rng256 *rng)
 {
-	t_u32	result;
+	t_u64	*s;
+	t_u64	x;
+	t_u64	t;
 
-	result = r->state[0] ^ (r->state[1] << 11) ^ (r->state[2] >> 7)
-		^ (r->state[3] << 3) ^ (r->hash += PHI) ^ r->seed;
-	result ^= result << 13;
-	result ^= result >> 17;
-	result ^= result << 5;
-	r->state[0] = r->state[1];
-	r->state[1] = r->state[2];
-	r->state[2] = r->state[3];
-	r->state[3] = result;
-	return (result);
+	s = rng->s;
+	x = rol64(s[0] + s[3], 23) + s[0];
+	t = rng->s[1] << 17;
+	s[2] ^= s[0];
+	s[3] ^= s[1];
+	s[1] ^= s[2];
+	s[0] ^= s[3];
+	s[2] ^= t;
+	s[3] = rol64(s[3], 45);
+	return (x);
+}
+
+t_u32	ft_rng_u32(t_rng256 *rng)
+{
+	return (ft_rng_u64(rng) >> 32);
+}
+
+double	ft_rng_f64(t_rng256 *rng)
+{
+	return ((ft_rng_u64(rng) >> 11) * (1.0 / 9007199254740992.0));
 }

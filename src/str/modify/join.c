@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:16:46 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/13 18:57:00 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:12:25 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	size_t	i;
 
 	res = ft_malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!res)
+		return (NULL);
 	i = 0;
 	while (*s1)
 		res[i++] = *s1++;

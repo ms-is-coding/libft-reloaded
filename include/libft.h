@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/04/14 00:52:32 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/04/14 22:49:36 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@
 # include <time.h>
 # include <unistd.h>
 
-typedef unsigned int	t_u32;
+typedef uint8_t		t_u8;
+typedef uint16_t	t_u16;
+typedef uint32_t	t_u32;
+typedef uint64_t	t_u64;
 
-typedef struct s_rng
+typedef struct s_rng256
 {
-	t_u32	state[4];
-	t_u32	seed;
-	t_u32	hash;
-}	t_rng;
+	t_u64	s[4];
+}	t_rng256;
 
 /* ************************************************************************** */
 /* ALLOC                                                                      */
@@ -51,8 +52,10 @@ time_t		ft_time(timer_t *timer);
 /* RANDOM                                                                     */
 /* ************************************************************************** */
 
-t_rng		ft_rng_init(t_u32 seed);
-t_u32		ft_rng_next(t_rng *rng);
+void		ft_rng_init(t_rng256 *rng, t_u64 seed);
+t_u64		ft_rng_u64(t_rng256 *rng);
+t_u32		ft_rng_u32(t_rng256 *rng);
+double		ft_rng_f64(t_rng256 *rng);
 
 /* ************************************************************************** */
 /* CHECKS                                                                     */
