@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 22:46:09 by smamalig          #+#    #+#             */
-/*   Updated: 2025/04/14 22:50:54 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/04/14 22:54:54 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_rng_init(t_rng256 *rng, t_u64 seed)
 {
 	t_u64	tmp;
 
+	rng->seed = seed;
 	tmp = splitmix64(&seed);
 	rng->s[0] = (t_u32)tmp;
 	rng->s[1] = (t_u32)(tmp >> 32);
