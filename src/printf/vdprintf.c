@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 16:45:24 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/24 15:19:20 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/04/14 11:06:07 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	ft_vdprintf(int fd, const char *fmt, va_list ap)
 			return (-1);
 	}
 	len = ft_vsnprintf(buf, len + 1, fmt, ap);
-	write(fd, buf, len);
+	if (write(fd, buf, len) != len)
+		len = -1;
 	if (buf != small_buf)
 		free(buf);
 	return (len);
