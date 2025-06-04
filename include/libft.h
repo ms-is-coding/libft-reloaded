@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
+/*                                                         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
 /*   libft.h                                               ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/06/04 17:52:24 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
+/*                                                         ⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠁⢀⣼⣿⠟⠀   */
+/*   By: smamalig <smamalig@student.42.fr>                 ⠀⣴⣿⣟⣁⣀⣀⣀⡀⠀⣴⣿⡟⠁⢀⠀   */
+/*                                                         ⠀⠿⠿⠿⠿⠿⣿⣿⡇⠀⣿⣿⣇⣴⣿⠀   */
+/*   Created: 2025/02/06 23:32:58 by smamalig              ⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀   */
+/*   Updated: 2025/06/04 18:20:37 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef enum e_type
 }	t_type;
 
 typedef union u_any {
-	void		*any;
+	void		*ptr;
 	char		*str;
 	uint64_t	u64;
 	int64_t		i64;
@@ -225,6 +225,7 @@ typedef struct s_vector
 t_value		ft_gen_val(t_type type, t_any value);
 
 t_result	ft_vector_init(t_vector *vec, size_t size);
+t_result	ft_vector_resize(t_vector *vec, size_t size);
 void		ft_vector_free(t_vector *vec);
 void		ft_vector_foreach(t_vector *vec, void (*fn)(size_t idx, t_value data));
 void		ft_vector_map(t_vector *vec, t_value (*fn)(size_t idx, t_value data));
