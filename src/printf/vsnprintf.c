@@ -6,87 +6,47 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 16:31:49 by smamalig          #+#    #+#             */
-/*   Updated: 2025/03/19 15:24:47 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/05/22 19:08:34 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
-#include "libft.h"
-#include <string.h>
-#include <errno.h>
+#include "libft_printf.h"
+
 #include <stdio.h>
 
-void	ft_insert(t_printf_parser *parser, char c)
+void	__ft_printf_invalid_format(t_printf_parser *p)
 {
-	if (parser->size > 1)
-		*parser->dst = c;
-	else if (parser->size == 1)
-		*parser->dst = 0;
-	parser->dst++;
-	if (parser->size)
-		parser->size--;
-}
-
-void	ft_print_string(t_printf_parser *parser, const char *str)
-{
-	while (*str)
-		ft_insert(parser, *str++);
-}
-
-void	ft_print_int(t_printf_parser *parser, int n)
-{
-	if (n < 0)
-		ft_insert(parser, '-');
-	if (n >= 10 || n <= -10)
-		ft_print_int(parser, ft_abs(n / 10));
-	ft_insert(parser, ft_abs(n % 10) + '0');
-}
-
-void	ft_print_strerror(t_printf_parser *parser)
-{
-	const char	*err = strerror(errno);
-
-	while (*err)
-		ft_insert(parser, *err++);
-}
-
-void	ft_handle_conversion(t_printf_parser *parser)
-{
-	if (*parser->fmt == 's')
-		ft_print_string(parser, va_arg(parser->ap, const char *));
-	else if (*parser->fmt == 'd' || *parser->fmt == 'i')
-		ft_print_int(parser, va_arg(parser->ap, int));
-	else if (*parser->fmt == 'c')
-		ft_insert(parser, va_arg(parser->ap, int));
-	else if (*parser->fmt == 'm')
-		ft_print_strerror(parser);
-	else
-		return (ft_insert(parser, '%'));
-	parser->fmt++;
+	p->prec = p->spec_pos;
+	p->spec_buf[p->spec_pos] = 0;
+	p->width = -1;
+	__ft_printf_str(p, p->spec_buf);
 }
 
 int	ft_vsnprintf(char *dst, size_t size, const char *fmt, va_list ap)
 {
-	t_printf_parser	parser;
+	t_printf_parser	p;
 
-	parser.dst = dst;
-	parser.fmt = fmt;
-	parser.size = size;
-	va_copy(parser.ap, ap);
-	while (*parser.fmt)
+	if (!fmt)
+		return (-1);
+	p.dst = dst;
+	p.fmt = fmt;
+	p.size = size;
+	va_copy(p.ap, ap);
+	__ft_printf_init_parser(&p);
+	while (p.curr(&p))
 	{
-		while (*parser.fmt && *parser.fmt != '%')
-			ft_insert(&parser, *parser.fmt++);
-		if (!*parser.fmt)
+		__ft_printf_reset_parser(&p);
+		while (p.curr(&p) && p.curr(&p) != '%')
+			__ft_printf_insert(&p, *p.fmt++);
+		if (!p.curr(&p))
 			break ;
-		parser.fmt++;
-		if (*parser.fmt == '%')
-			ft_insert(&parser, *parser.fmt++);
-		else
-			ft_handle_conversion(&parser);
+		p.next(&p);
+		if (__ft_printf_handle_conv(&p))
+			return (va_end(p.ap), -1);
 	}
-	if (parser.size)
-		*parser.dst = 0;
-	va_end(parser.ap);
-	return (parser.dst - dst);
+	if (p.pos < p.size)
+		p.dst[p.pos] = 0;
+	va_end(p.ap);
+	return (p.pos);
 }

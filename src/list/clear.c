@@ -6,13 +6,13 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 01:47:59 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/22 23:36:55 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/06/01 12:42:09 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_list_clear(t_list **ptr, void (*del)(void *))
+void	ft_list_clear(t_list **ptr, void (*del)(t_value))
 {
 	t_list	*temp;
 
@@ -22,7 +22,7 @@ void	ft_list_clear(t_list **ptr, void (*del)(void *))
 	{
 		temp = *ptr;
 		*ptr = temp->next;
-		if (temp->data)
+		if (temp->data.any)
 			del(temp->data);
 		free(temp);
 	}

@@ -6,13 +6,13 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 01:50:39 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/22 23:34:49 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/06/01 12:48:06 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_list_map(t_list *list, void *(*f)(void *))
+t_list	*ft_list_map(t_list *list, t_value (*f)(t_value))
 {
 	t_list	*new;
 	t_list	*ref;

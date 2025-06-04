@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/04/14 22:54:10 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/06/01 12:52:44 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <time.h>
 # include <unistd.h>
 
+# include "libft_printf.h"
+
 typedef uint8_t		t_u8;
 typedef uint16_t	t_u16;
 typedef uint32_t	t_u32;
@@ -32,6 +34,25 @@ typedef struct s_rng256
 	t_u64	seed;
 }	t_rng256;
 
+typedef enum e_result
+{
+	FT_OK,
+	FT_ERROR,
+	FT_OTHER
+}	t_result;
+
+typedef union u_value
+{
+	void		*any;
+	char		*str;
+	uint64_t	u64;
+	int64_t		i64;
+	uint32_t	u32;
+	int32_t		i32;
+	float		f32;
+	double		f64;
+}	t_value;
+
 /* ************************************************************************** */
 /* ALLOC                                                                      */
 /* ************************************************************************** */
@@ -40,14 +61,6 @@ void		*ft_calloc(size_t n, size_t size);
 void		ft_free(void *ptr);
 void		*ft_malloc(size_t size);
 void		*ft_realloc(void *ptr, size_t old_size, size_t new_size);
-
-/* ************************************************************************** */
-/* TIME                                                                       */
-/* ************************************************************************** */
-
-int			ft_sleep(unsigned int seconds);
-int			ft_usleep(__useconds_t microseconds);
-time_t		ft_time(timer_t *timer);
 
 /* ************************************************************************** */
 /* RANDOM                                                                     */
@@ -170,36 +183,46 @@ void		ft_striteri(char *s, void (*f)(size_t, char *));
 
 typedef struct s_list
 {
-	void			*data;
+	t_value			data;
 	struct s_list	*next;
 }	t_list;
 
 size_t		ft_list_size(t_list *list);
-t_list		*ft_list_new(void *data);
+t_list		*ft_list_new(t_value data);
 t_list		*ft_list_last(t_list *list);
 t_list		*ft_list_at(t_list *list, ssize_t n);
 void		ft_list_pushfront(t_list **ptr, t_list *el);
 void		ft_list_pushback(t_list **ptr, t_list *el);
-void		ft_list_delete(t_list *el, void (*del)(void *));
-void		ft_list_clear(t_list **ptr, void (*del)(void *));
-void		ft_list_foreach(t_list *list, void (*f)(void *));
-t_list		*ft_list_map(t_list *list, void *(*f)(void *));
-void		ft_list_remove_if(t_list **ptr, void *ref,
-				int (*cmp)(void *, void *), void (*free_data)(void *));
+void		ft_list_delete(t_list *el, void (*del)(t_value));
+void		ft_list_clear(t_list **ptr, void (*del)(t_value));
+void		ft_list_foreach(t_list *list, void (*f)(t_value));
+t_list		*ft_list_map(t_list *list, t_value (*f)(t_value));
+void		ft_list_remove_if(t_list **ptr, t_value ref,
+				int (*cmp)(t_value, t_value), void (*free_data)(t_value));
 
 /* ************************************************************************** */
-/* PRINTF                                                                     */
+/* VECTOR                                                                     */
 /* ************************************************************************** */
 
-int			ft_printf(const char *fmt, ...);
-int			ft_dprintf(int fd, const char *fmt, ...);
-int			ft_sprintf(char *dst, const char *fmt, ...);
-int			ft_snprintf(char *dst, size_t size, const char *fmt, ...);
+typedef struct s_vector
+{
+	size_t	length;
+	size_t	capacity;
+	size_t	offset;
+	t_value	*data;
+}	t_vector;
 
-int			ft_vprintf(const char *fmt, va_list ap);
-int			ft_vdprintf(int fd, const char *fmt, va_list ap);
-int			ft_vsprintf(char *dst, const char *fmt, va_list ap);
-int			ft_vsnprintf(char *dst, size_t size, const char *fmt, va_list ap);
+t_result	ft_vector_init(t_vector *vec, size_t size);
+void		ft_vector_free(t_vector *vec);
+void		ft_vector_foreach(t_vector *vec, void (*fn)(size_t idx, t_value data));
+void		ft_vector_map(t_vector *vec, t_value (*fn)(size_t idx, t_value data));
+bool		ft_vector_every(t_vector *vec, int (*fn)(size_t idx, t_value data));
+bool		ft_vector_some(t_vector *vec, int (*fn)(size_t idx, t_value data));
+t_value		ft_vector_pop(t_vector *vec);
+t_value		ft_vector_shift(t_vector *vec);
+t_result	ft_vector_push(t_vector *vec, t_value value);
+t_result	ft_vector_unshift(t_vector *vec, t_value value);
+t_value		ft_vector_at(t_vector *vec, ssize_t idx);
 
 /* ************************************************************************** */
 /* BINARY TREE                                                                */

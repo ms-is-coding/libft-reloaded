@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   util2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 22:16:05 by smamalig          #+#    #+#             */
-/*   Updated: 2025/03/24 22:27:32 by smamalig         ###   ########.fr       */
+/*   Created: 2025/05/08 23:29:07 by smamalig          #+#    #+#             */
+/*   Updated: 2025/06/01 12:12:03 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <sys/syscall.h>
+#include "libft_internal.h"
+#include <stddef.h>
 
-time_t	ft_time(timer_t *timer)
+char	*__ft_printf_strchr(const char *s, char c)
 {
-	time_t	result;
+	while (*s && *s != c)
+		s++;
+	if (*s == c)
+		return ((char *)s);
+	return (NULL);
+}
 
-	asm volatile (
-		"syscall"
-		: "=a"(result)
-		: "a"(SYS_time), "D"(timer)
-		: "rcx", "r11", "memory");
-	return (result);
+int	__ft_printf_isdigit(char c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+size_t	__ft_printf_strnlen(const char *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (n-- && s[i])
+		i++;
+	return (i);
 }
