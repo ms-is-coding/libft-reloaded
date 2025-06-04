@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libft.h                                               ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/06/01 12:52:44 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/06/04 17:52:24 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,18 @@ typedef struct s_rng256
 
 typedef enum e_result
 {
-	FT_OK,
-	FT_ERROR,
-	FT_OTHER
+	RESULT_OK,
+	RESULT_ERROR,
+	RESULT_OTHER
 }	t_result;
 
-typedef union u_value
+typedef enum e_type
 {
+	TYPE_UNDEFINED,
+	TYPE_OTHER,
+}	t_type;
+
+typedef union u_any {
 	void		*any;
 	char		*str;
 	uint64_t	u64;
@@ -51,6 +56,11 @@ typedef union u_value
 	int32_t		i32;
 	float		f32;
 	double		f64;
+}	t_any;
+
+typedef struct s_value {
+	t_type	type;
+	t_any	value;
 }	t_value;
 
 /* ************************************************************************** */
@@ -212,12 +222,14 @@ typedef struct s_vector
 	t_value	*data;
 }	t_vector;
 
+t_value		ft_gen_val(t_type type, t_any value);
+
 t_result	ft_vector_init(t_vector *vec, size_t size);
 void		ft_vector_free(t_vector *vec);
 void		ft_vector_foreach(t_vector *vec, void (*fn)(size_t idx, t_value data));
 void		ft_vector_map(t_vector *vec, t_value (*fn)(size_t idx, t_value data));
-bool		ft_vector_every(t_vector *vec, int (*fn)(size_t idx, t_value data));
-bool		ft_vector_some(t_vector *vec, int (*fn)(size_t idx, t_value data));
+_Bool		ft_vector_every(t_vector *vec, _Bool (*fn)(size_t idx, t_value data));
+_Bool		ft_vector_some(t_vector *vec, _Bool (*fn)(size_t idx, t_value data));
 t_value		ft_vector_pop(t_vector *vec);
 t_value		ft_vector_shift(t_vector *vec);
 t_result	ft_vector_push(t_vector *vec, t_value value);

@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
-/*   clear.c                                               ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
+/*   at.c                                                  ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
 /*                                                         ⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠁⢀⣼⣿⠟⠀   */
 /*   By: smamalig <smamalig@student.42.fr>                 ⠀⣴⣿⣟⣁⣀⣀⣀⡀⠀⣴⣿⡟⠁⢀⠀   */
 /*                                                         ⠀⠿⠿⠿⠿⠿⣿⣿⡇⠀⣿⣿⣇⣴⣿⠀   */
-/*   Created: 2025/02/12 01:47:59 by smamalig              ⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀   */
-/*   Updated: 2025/06/04 18:05:00 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
+/*   Created: 2025/06/04 15:17:34 by smamalig              ⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀   */
+/*   Updated: 2025/06/04 17:18:04 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_list_clear(t_list **ptr, void (*del)(t_value))
+t_value	ft_vector_at(t_vector *vec, ssize_t n)
 {
-	t_list	*temp;
-
-	if (!ptr)
-		return ;
-	while (*ptr)
-	{
-		temp = *ptr;
-		*ptr = temp->next;
-		if (temp->data.type != TYPE_UNDEFINED)
-			del(temp->data);
-		free(temp);
-	}
+	if (n >= (ssize_t)vec->length || n < -(ssize_t)vec->length)
+		return (ft_gen_val(TYPE_UNDEFINED, (t_any){0}));
+	if (n >= 0)
+		return (vec->data[(n + vec->offset) % vec->capacity]);
+	return (vec->data[(n + vec->offset - 1) % vec->capacity]);
 }

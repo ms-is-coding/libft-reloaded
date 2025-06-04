@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
-/*   clear.c                                               ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
+/*   some.c                                                ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
 /*                                                         ⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠁⢀⣼⣿⠟⠀   */
 /*   By: smamalig <smamalig@student.42.fr>                 ⠀⣴⣿⣟⣁⣀⣀⣀⡀⠀⣴⣿⡟⠁⢀⠀   */
 /*                                                         ⠀⠿⠿⠿⠿⠿⣿⣿⡇⠀⣿⣿⣇⣴⣿⠀   */
-/*   Created: 2025/02/12 01:47:59 by smamalig              ⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀   */
-/*   Updated: 2025/06/04 18:05:00 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
+/*   Created: 2025/06/04 17:54:04 by smamalig              ⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀   */
+/*   Updated: 2025/06/04 17:54:30 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_list_clear(t_list **ptr, void (*del)(t_value))
+_Bool	ft_vector_some(t_vector *vec, _Bool (*fn)(size_t, t_value))
 {
-	t_list	*temp;
+	size_t	i;
 
-	if (!ptr)
-		return ;
-	while (*ptr)
+	i = 0;
+	while (i < vec->length)
 	{
-		temp = *ptr;
-		*ptr = temp->next;
-		if (temp->data.type != TYPE_UNDEFINED)
-			del(temp->data);
-		free(temp);
+		if (fn(i, vec->data[(vec->offset + i) % vec->capacity]))
+			return (true);
+		i++;
 	}
+	return (false);
 }

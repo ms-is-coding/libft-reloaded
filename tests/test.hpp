@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.hpp                                           :+:      :+:    :+:   */
+/*   test.hpp                                              ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ms <smamalig@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 00:29:03 by ms                #+#    #+#             */
-/*   Updated: 2025/02/25 14:32:59 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/06/04 15:45:55 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ extern void test_str_copy();
 extern void test_str_info();
 extern void test_str_modify();
 extern void test_str_search();
+extern void test_vector();
 
 enum ResultType {
 	RESULT_EQ,
