@@ -1,74 +1,72 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split.c                                            :+:      :+:    :+:   */
+/*   split.c                                               ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:43:48 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/11 22:14:00 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/06/05 22:39:11 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_subs(const char *s, char delim)
+static int	alloc_sub(const char *s, const char *start, int i, char **collector)
 {
-	int	count;
-	int	set;
-
-	count = 0;
-	set = 1;
-	if (!s)
+	if (!collector)
+		return (0);
+	collector[i] = malloc(s - start + 1);
+	if (!collector[i])
 		return (1);
-	while (*s)
-	{
-		if (set && *s == delim)
-		{
-			count++;
-			set = 0;
-		}
-		else if (*s != delim)
-			set = 1;
-		s++;
-	}
-	return (count + 1);
+	ft_memcpy(collector[i], start, s - start);
+	collector[i][s - start] = 0;
+	return (0);
 }
 
-static void	ft_split_inner(const char *s, char delim, char **retval)
+static int	split_words(const char *s, char delim, char **collector)
 {
-	int		set;
-	char	*start;
+	int			count;
+	const char	*start;
 
-	set = 0;
-	start = (char *)s;
-	while (*s)
+	count = 0;
+	start = NULL;
+	while (1)
 	{
-		if (*s == delim)
+		if (*s != delim && !start)
+			start = s;
+		else if (start && (*s == delim || !*s))
 		{
-			if (set)
-				*retval++ = ft_substr(start, 0, s - start);
-			set = 0;
-			start = (char *)s + 1;
+			alloc_sub(s, start, count, collector);
+			count++;
+			start = NULL;
 		}
-		if (*s != delim)
-			set = 1;
+		if (!*s)
+			break ;
 		s++;
 	}
-	if (set)
-		*retval++ = ft_substr(start, 0, s - start);
-	*retval = 0;
+	if (collector)
+		collector[count] = NULL;
+	return (count + 1);
 }
 
 char	**ft_split(const char *s, char delim)
 {
-	char	**retval;
+	char	**collector;
+	int		sub_count;
+	int		i;
 
-	retval = malloc(sizeof(char *) * count_subs(s, delim));
-	if (!retval)
+	sub_count = split_words(s, delim, NULL);
+	collector = ft_calloc(sub_count, sizeof(char *));
+	if (!collector)
 		return (NULL);
-	if (!s)
-		return (retval);
-	ft_split_inner(s, delim, retval);
-	return (retval);
+	if (split_words(s, delim, collector) != sub_count)
+	{
+		i = 0;
+		while (i < sub_count)
+			free(collector[i++]);
+		free(collector);
+		return (NULL);
+	}
+	return (collector);
 }
