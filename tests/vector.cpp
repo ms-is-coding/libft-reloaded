@@ -6,48 +6,48 @@
 /*   By: smamalig <smamalig@student.42.fr>                 ⠀⣴⣿⣟⣁⣀⣀⣀⡀⠀⣴⣿⡟⠁⢀⠀   */
 /*                                                         ⠀⠿⠿⠿⠿⠿⣿⣿⡇⠀⣿⣿⣇⣴⣿⠀   */
 /*   Created: 2025/06/04 15:41:54 by smamalig              ⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀   */
-/*   Updated: 2025/06/04 18:00:52 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
+/*   Updated: 2025/06/05 09:53:18 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.hpp"
-#include <signal.h>
+#include <assert.h>
+#include <unistd.h>
 extern "C" {
-#include "libft.h"
+	#include "libft.h"
 }
 
 void print_value(t_value value) {
 	if (value.type == TYPE_UNDEFINED) {
-		printf("undefined\n");
+		ft_printf("undefined\n");
 		return ;
 	}
-	printf("%lu\n", value.value.u64);
+	ft_printf("%lu\n", value.value.u64);
 }
 
 void print_internal(t_vector *vec) {
-	printf("=== Vector { length = %zu, capacity = %zu, offset = %zu } ===\n",
+	ft_printf("=== Vector { length = %zu, capacity = %zu, offset = %zu } ===\n",
 		vec->length, vec->capacity, vec->offset);
 	for (size_t i = 0; i < vec->capacity; i++) {
-		printf("- ");
-		print_value(vec->data[i]);
+		ft_printf("- %.16lx\n", vec->data[i].value.u64);
 	}
-	printf("=== === ===\n");
+	ft_printf("=== === ===\n");
 }
 
 void at_value(t_vector *vec, ssize_t idx) {
-	printf("vec[%li] = ", idx);
+	ft_printf("vec[%li] = ", idx);
 	t_value value = ft_vector_at(vec, idx);
 	print_value(value);
 }
 
 void pop_value(t_vector *vec) {
-	printf("pop = ");
+	ft_printf("pop = ");
 	t_value value = ft_vector_pop(vec);
 	print_value(value);
 }
 
 void shift_value(t_vector *vec) {
-	printf("shift = ");
+	ft_printf("shift = ");
 	t_value value = ft_vector_shift(vec);
 	print_value(value);
 }
@@ -57,18 +57,19 @@ void test_vector() {
 	
 	t_vector vec;
 	t_vector *ptr = &vec;
-	if (ft_vector_init(ptr, 4) != RESULT_OK)
-		exit(SIGSEGV);
-	at_value(ptr, 0);
-	printf("---\n");
-	ft_vector_push(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 1 }));
-	ft_vector_push(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 2 }));
-	ft_vector_push(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 3 }));
-	printf("---\n");
-	pop_value(ptr);
-	printf("---\n");
-	shift_value(ptr);
-	ft_vector_push(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 42 }));
-	ft_vector_unshift(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 123 }));
-	ft_vector_unshift(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 21 }));
+	assert(ft_vector_init(ptr, 4) == RESULT_OK);
+	assert(ft_vector_unshift(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 42 })) == RESULT_OK);
+	assert(ft_vector_unshift(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 123 })) == RESULT_OK);
+	assert(ft_vector_unshift(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 21 })) == RESULT_OK);
+	assert(ft_vector_push(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 0xffff })) == RESULT_OK);
+	print_internal(ptr);
+	assert(ft_vector_push(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 0xff })) == RESULT_OK);
+	assert(ft_vector_push(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 0x7f })) == RESULT_OK);
+	print_internal(ptr);
+	assert(ft_vector_unshift(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 0x42 })) == RESULT_OK);
+	assert(ft_vector_unshift(ptr, ft_gen_val(TYPE_OTHER, { .u64 = 0x88 })) == RESULT_OK);
+	assert(ft_vector_push(ptr, ft_gen_val(TYPE_OTHER, { .i32 = -1 })) == RESULT_OK);
+	print_internal(ptr);
+	for (int i = -ptr->length; i < (int)ptr->length; i++)
+		at_value(ptr, i);
 }

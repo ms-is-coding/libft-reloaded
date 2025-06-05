@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>                 ⠀⣴⣿⣟⣁⣀⣀⣀⡀⠀⣴⣿⡟⠁⢀⠀   */
 /*                                                         ⠀⠿⠿⠿⠿⠿⣿⣿⡇⠀⣿⣿⣇⣴⣿⠀   */
 /*   Created: 2025/02/06 23:32:58 by smamalig              ⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀   */
-/*   Updated: 2025/06/04 18:20:37 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
+/*   Updated: 2025/06/05 08:38:13 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ typedef uint16_t	t_u16;
 typedef uint32_t	t_u32;
 typedef uint64_t	t_u64;
 
+typedef int8_t	t_i8;
+typedef int16_t	t_i16;
+typedef int32_t	t_i32;
+typedef int64_t	t_i64;
+
 typedef struct s_rng256
 {
 	t_u64	s[4];
@@ -48,14 +53,14 @@ typedef enum e_type
 }	t_type;
 
 typedef union u_any {
-	void		*ptr;
-	char		*str;
-	uint64_t	u64;
-	int64_t		i64;
-	uint32_t	u32;
-	int32_t		i32;
-	float		f32;
-	double		f64;
+	void	*ptr;
+	char	*str;
+	t_u64	u64;
+	t_i64	i64;
+	t_u32	u32;
+	t_i32	i32;
+	float	f32;
+	double	f64;
 }	t_any;
 
 typedef struct s_value {
