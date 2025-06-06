@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile                                              ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀    #
 #                                                     +:+ +:+         +:+      #
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/06/01 12:46:47 by smamalig         ###   ########.fr        #
+#    Updated: 2025/06/06 14:04:04 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,10 @@ ifeq ($(DEBUG), 1)
 	CFLAGS += -Wpedantic -g3
 else
 	CFLAGS += -Werror
+endif
+
+ifeq ($(USE_ERRNO), 1)
+	CFLAGS += -DUSE_ERRNO
 endif
 
 all: $(NAME)
