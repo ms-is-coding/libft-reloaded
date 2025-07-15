@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
+/*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
-/*                                                         ⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠁⢀⣼⣿⠟⠀   */
-/*   By: smamalig <smamalig@student.42.fr>                 ⠀⣴⣿⣟⣁⣀⣀⣀⡀⠀⣴⣿⡟⠁⢀⠀   */
-/*                                                         ⠀⠿⠿⠿⠿⠿⣿⣿⡇⠀⣿⣿⣇⣴⣿⠀   */
-/*   Created: 2025/02/06 23:32:58 by smamalig              ⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀   */
-/*   Updated: 2025/07/02 17:42:48 by smamalig         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
+/*   Updated: 2025/07/15 10:36:36 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef union u_any
 typedef struct s_value
 {
 	t_type	type;
+	int		reserved;
 	t_any	value;
 }	t_value;
 
@@ -216,6 +217,7 @@ void		ft_list_foreach(t_list *list, void (*f)(t_value));
 t_list		*ft_list_map(t_list *list, t_value (*f)(t_value));
 void		ft_list_remove_if(t_list **ptr, t_value ref,
 				int (*cmp)(t_value, t_value), void (*free_data)(t_value));
+void		ft_list_reverse(t_list **ptr);
 
 /* ************************************************************************** */
 /* VECTOR                                                                     */

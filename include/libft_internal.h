@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:13:41 by smamalig          #+#    #+#             */
-/*   Updated: 2025/06/01 12:41:26 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:44:07 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ typedef struct s_printf_parser
 	int			len_mod;
 	int			spec_pos;
 	char		spec_buf[32];
-
+	int			reserved_0;
+	void		*reserved_1;
 	char		(*curr)(struct s_printf_parser *parser);
 	char		(*next)(struct s_printf_parser *parser);
 	int			(*match)(struct s_printf_parser *parser, char c);

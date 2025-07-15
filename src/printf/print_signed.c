@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:08:04 by smamalig          #+#    #+#             */
-/*   Updated: 2025/05/16 10:48:07 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:50:30 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void	__ft_printf_int_internal(t_printf_parser *parser,
 	if (!iters)
 		return ;
 	__ft_printf_int_internal(parser, n / 10, iters - 1);
-	__ft_printf_insert(parser, __ft_printf_abs_char(n % 10) + '0');
+	__ft_printf_insert(parser, __ft_printf_abs_char((char)(n % 10)) + '0');
 }
 
-int	__ft_printf_print_len(t_printf_parser *parser, intmax_t n)
+static int	__ft_printf_print_len(t_printf_parser *parser, intmax_t n)
 {
 	const int	len = __ft_printf_int_len(n);
 

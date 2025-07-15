@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 16:31:49 by smamalig          #+#    #+#             */
-/*   Updated: 2025/05/22 19:08:34 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:11:35 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ int	ft_vsnprintf(char *dst, size_t size, const char *fmt, va_list ap)
 	if (p.pos < p.size)
 		p.dst[p.pos] = 0;
 	va_end(p.ap);
-	return (p.pos);
+	return ((int)p.pos);
 }

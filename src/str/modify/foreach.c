@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:22:28 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/11 22:29:01 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:31:39 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_striteri(char *s, void (*f)(size_t, char *))
 {
 	size_t	i;
 
-	i = -1;
+	i = (size_t)-1;
 	while (s[++i])
-		f(i, s + i);
+		f(i, (char *)(s + i));
 }

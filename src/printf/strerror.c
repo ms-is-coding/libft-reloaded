@@ -6,9 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:32:50 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/09 11:39:14 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:44:43 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+char	*__ft_str_errorname(int error);
 
 #ifdef USE_ERRNO
 

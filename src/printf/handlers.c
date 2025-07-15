@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 20:05:40 by smamalig          #+#    #+#             */
-/*   Updated: 2025/06/01 12:15:38 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:08:02 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	__ft_printf_handle_int(t_printf_parser *p)
 	else if (p->len_mod == PRINTF_LEN_LL)
 		__ft_printf_int(p, (long long)va_arg(p->ap, long long));
 	else if (p->len_mod == PRINTF_LEN_Z)
-		__ft_printf_int(p, (ssize_t)va_arg(p->ap, size_t));
+		__ft_printf_int(p, (intmax_t)va_arg(p->ap, size_t));
 	else
 		__ft_printf_int(p, va_arg(p->ap, int));
 }

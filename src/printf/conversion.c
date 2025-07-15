@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 20:09:02 by smamalig          #+#    #+#             */
-/*   Updated: 2025/06/01 12:15:01 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:50:11 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	__ft_printf_conversion(t_printf_parser *p)
 	else if (p->match(p, '%'))
 		__ft_printf_insert(p, '%');
 	else if (p->match(p, 'c'))
-		__ft_printf_char(p, va_arg(p->ap, int));
+		__ft_printf_char(p, (char)va_arg(p->ap, int));
 	else if (p->match(p, 'i') || p->match(p, 'd'))
 		__ft_printf_handle_int(p);
 	else if (p->match(p, 'u'))
@@ -92,7 +92,7 @@ static void	__ft_printf_conversion(t_printf_parser *p)
 	else if (p->match(p, '%'))
 		__ft_printf_insert(p, '%');
 	else if (p->match(p, 'c'))
-		__ft_printf_char(p, va_arg(p->ap, int));
+		__ft_printf_char(p, (char)va_arg(p->ap, int));
 	else if (p->match(p, 'i') || p->match(p, 'd'))
 		__ft_printf_handle_int(p);
 	else if (p->match(p, 'u'))

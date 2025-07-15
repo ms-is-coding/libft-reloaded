@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 16:53:48 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/23 12:29:23 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:09:06 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_putnbr_fd(int n, int fd)
 		buf[0] = '0';
 	while (n)
 	{
-		buf[i--] = ft_abs(n % 10) + '0';
+		buf[i--] = (char)ft_abs(n % 10) + '0';
 		n /= 10;
 	}
 	write(fd, buf, ft_strlen(buf));
