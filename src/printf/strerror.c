@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:32:50 by smamalig          #+#    #+#             */
-/*   Updated: 2025/06/01 12:14:13 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:39:14 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ char	*__ft_str_errorname(int error)
 		"EREMOTEIO", "EDQUOT", "ENOMEDIUM", "EMEDIUMTYPE", "ECANCELED",
 		"ENOKEY", "EKEYEXPIRED", "EKEYREVOKED", "EKEYREJECTED", "EOWNERDEAD",
 		"ENOTRECOVERABLE", "ERFKILL", "EHWPOISION"}[error]);
+}
+
+#else
+
+char	*__ft_str_errorname(int error)
+{
+	(void)error;
+	return ("");
 }
 
 #endif
