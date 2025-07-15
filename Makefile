@@ -6,7 +6,7 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/07/02 17:40:43 by smamalig         ###   ########.fr        #
+#    Updated: 2025/07/15 09:57:39 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ RESET       = \e[m
 ifeq ($(DEBUG), 1)
 	CFLAGS += -Wpedantic -g3 -Wmissing-declarations -Wpadded -Wshadow -std=c99 \
 			  -Wconversion -Wstrict-prototypes -Wmissing-prototypes \
-			  -Wold-style-definition -Werror
+			  -Wold-style-definition
 else
 	CFLAGS += -Werror
 endif
