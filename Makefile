@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                              ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/06/06 14:04:04 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    #
+#    Updated: 2025/07/02 17:40:43 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ CYAN        = \e[36m
 RESET       = \e[m
 
 ifeq ($(DEBUG), 1)
-	CFLAGS += -Wpedantic -g3
+	CFLAGS += -Wpedantic -g3 -Wmissing-declarations -Wpadded -Wshadow -std=c99 \
+			  -Wconversion -Wstrict-prototypes -Wmissing-prototypes \
+			  -Wold-style-definition -Werror
 else
 	CFLAGS += -Werror
 endif

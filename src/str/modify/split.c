@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split.c                                               ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
+/*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:43:48 by smamalig          #+#    #+#             */
-/*   Updated: 2025/06/05 22:39:11 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
+/*   Updated: 2025/07/02 12:17:59 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static int	split_words(const char *s, char delim, char **collector)
 			start = s;
 		else if (start && (*s == delim || !*s))
 		{
-			alloc_sub(s, start, count, collector);
+			if (alloc_sub(s, start, count, collector))
+				return (count);
 			count++;
 			start = NULL;
 		}

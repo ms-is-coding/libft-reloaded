@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:45:37 by smamalig          #+#    #+#             */
-/*   Updated: 2025/04/14 22:50:01 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:20:30 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,9 @@ static inline t_u64	rol64(t_u64 x, int k)
 
 t_u64	ft_rng_u64(t_rng256 *rng)
 {
-	t_u64	*s;
-	t_u64	x;
-	t_u64	t;
-
-	s = rng->s;
-	x = rol64(s[0] + s[3], 23) + s[0];
-	t = rng->s[1] << 17;
+	auto t_u64 *s = rng->s;
+	auto t_u64 x = rol64(s[0] + s[3], 23) + s[0];
+	auto t_u64 t = rng->s[1] << 17;
 	s[2] ^= s[0];
 	s[3] ^= s[1];
 	s[1] ^= s[2];
