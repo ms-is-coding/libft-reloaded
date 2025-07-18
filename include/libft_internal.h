@@ -6,13 +6,14 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:13:41 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/15 10:44:07 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 08:40:34 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_INTERNAL_H
 # define LIBFT_INTERNAL_H
 
+#include "libft.h"
 # include <stdarg.h>
 # include <stddef.h>
 # include <stdint.h>
@@ -102,5 +103,9 @@ void		__ft_printf_handle_hex(t_printf_parser *p, int mask);
 void		__ft_printf_handle_int(t_printf_parser *p);
 void		__ft_printf_handle_uint(t_printf_parser *p);
 int			__ft_printf_handle_conv(t_printf_parser *p);
+
+/* FILE */
+
+t_result	__ft_file_skip_whitespace(t_file *file);
 
 #endif

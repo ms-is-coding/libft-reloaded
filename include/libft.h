@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/15 10:36:36 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 08:39:44 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,32 @@
 # define LIBFT_H
 
 # include <stdbool.h>
+# include <assert.h>
 # include <stddef.h>
 # include <stdint.h>
 # include <stdlib.h>
 # include <stdarg.h>
 # include <time.h>
 # include <unistd.h>
+# include <limits.h>
 
 # include "libft_printf.h"
 
-typedef uint8_t		t_u8;
-typedef uint16_t	t_u16;
-typedef uint32_t	t_u32;
-typedef uint64_t	t_u64;
-
-typedef int8_t		t_i8;
-typedef int16_t		t_i16;
-typedef int32_t		t_i32;
-typedef int64_t		t_i64;
-
 typedef struct s_rng256
 {
-	t_u64	s[4];
-	t_u64	seed;
+	uint64_t	s[4];
+	uint64_t	seed;
 }	t_rng256;
 
 typedef enum e_result
 {
 	RESULT_OK,
 	RESULT_ERROR,
-	RESULT_OTHER
+	RESULT_OVERFLOW,
+	RESULT_EOF,
+	RESULT_INVAL,
+	RESULT_READ_ERROR,
+	RESULT_UNKNOWN
 }	t_result;
 
 typedef enum e_type
@@ -54,14 +50,14 @@ typedef enum e_type
 
 typedef union u_any
 {
-	void	*ptr;
-	char	*str;
-	t_u64	u64;
-	t_i64	i64;
-	t_u32	u32;
-	t_i32	i32;
-	float	f32;
-	double	f64;
+	void		*ptr;
+	char		*str;
+	uint64_t	u64;
+	int64_t		i64;
+	uint32_t	u32;
+	int32_t		i32;
+	_Float32	f32;
+	_Float64	f64;
 }	t_any;
 
 typedef struct s_value
@@ -84,9 +80,9 @@ void		*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 /* RANDOM                                                                     */
 /* ************************************************************************** */
 
-void		ft_rng_init(t_rng256 *rng, t_u64 seed);
-t_u64		ft_rng_u64(t_rng256 *rng);
-t_u32		ft_rng_u32(t_rng256 *rng);
+void		ft_rng_init(t_rng256 *rng, uint64_t seed);
+uint64_t	ft_rng_u64(t_rng256 *rng);
+uint32_t	ft_rng_u32(t_rng256 *rng);
 double		ft_rng_f64(t_rng256 *rng);
 
 /* ************************************************************************** */
@@ -257,5 +253,36 @@ t_value		ft_vector_at(t_vector *vec, ssize_t idx);
 /* ************************************************************************** */
 /* HASHMAP                                                                    */
 /* ************************************************************************** */
+
+/* ************************************************************************** */
+/* FILE                                                                       */
+/* ************************************************************************** */
+
+# ifndef FILE_BUFFER_SIZE
+#  define FILE_BUFFER_SIZE 1024
+# endif
+
+typedef struct s_file
+{
+	int				fd;
+	unsigned int	len;
+	unsigned int	line;
+	_Bool			eof;
+	char			reserved[3];
+	char			*curr;
+	char			buf[FILE_BUFFER_SIZE];
+}	t_file;
+
+t_result	try(t_result res);
+
+t_result	ft_file_init(t_file *file, int fd);
+t_result	ft_file_i8(t_file *file, uint8_t *ret);
+t_result	ft_file_u8(t_file *file, uint8_t *ret);
+t_result	ft_file_atoi32(t_file *file, int32_t *ret);
+t_result	ft_file_atou32(t_file *file, uint32_t *ret);
+t_result	ft_file_atox32(t_file *file, uint32_t *ret);
+t_result	ft_file_consume(t_file *file, char c, _Bool *found);
+
+_Bool		ft_file_eof(t_file *file);
 
 #endif

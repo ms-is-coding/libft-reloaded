@@ -6,15 +6,15 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 22:46:09 by smamalig          #+#    #+#             */
-/*   Updated: 2025/04/14 22:54:54 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/17 13:45:39 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static t_u64	splitmix64(t_u64 *state)
+static uint64_t	splitmix64(uint64_t *state)
 {
-	t_u64	x;
+	uint64_t	x;
 
 	*state += 0x9E3779B97f4A7C15;
 	x = *state;
@@ -23,15 +23,15 @@ static t_u64	splitmix64(t_u64 *state)
 	return (x ^ (x >> 31));
 }
 
-void	ft_rng_init(t_rng256 *rng, t_u64 seed)
+void	ft_rng_init(t_rng256 *rng, uint64_t seed)
 {
-	t_u64	tmp;
+	uint64_t	tmp;
 
 	rng->seed = seed;
 	tmp = splitmix64(&seed);
-	rng->s[0] = (t_u32)tmp;
-	rng->s[1] = (t_u32)(tmp >> 32);
+	rng->s[0] = (uint32_t)tmp;
+	rng->s[1] = (uint32_t)(tmp >> 32);
 	tmp = splitmix64(&seed);
-	rng->s[2] = (t_u32)tmp;
-	rng->s[3] = (t_u32)(tmp >> 32);
+	rng->s[2] = (uint32_t)tmp;
+	rng->s[3] = (uint32_t)(tmp >> 32);
 }
