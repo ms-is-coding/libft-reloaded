@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 16:45:24 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 09:47:30 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 10:36:20 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 #include <unistd.h>
 
 #define BUFFER_SIZE 1024
+
+static inline void	noop(void)
+{
+	return ;
+}
 
 int	ft_vdprintf(int fd, const char *fmt, va_list ap)
 {
@@ -32,7 +37,8 @@ int	ft_vdprintf(int fd, const char *fmt, va_list ap)
 			return (-1);
 	}
 	len = ft_vsnprintf(buf, (size_t)len + 1, fmt, ap);
-	write(fd, buf, (size_t)len);
+	if (write(fd, buf, (size_t)len))
+		noop();
 	if (buf != small_buf)
 		free(buf);
 	return (len);
