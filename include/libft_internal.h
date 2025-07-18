@@ -6,14 +6,14 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:13:41 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 08:40:34 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 09:57:33 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_INTERNAL_H
 # define LIBFT_INTERNAL_H
 
-#include "libft.h"
+# include "libft.h"
 # include <stdarg.h>
 # include <stddef.h>
 # include <stdint.h>
@@ -67,45 +67,51 @@ typedef struct s_printf_parser
 # define PRINTF_UPPER 1
 # define PRINTF_LOWER 0
 
-void		__ft_printf_init_parser(t_printf_parser *p);
-void		__ft_printf_reset_parser(t_printf_parser *p);
+void		_ft_printf_init_parser(t_printf_parser *p);
+void		_ft_printf_reset_parser(t_printf_parser *p);
 
-intmax_t	__ft_printf_abs(intmax_t n);
-char		__ft_printf_abs_char(char c);
-int			__ft_printf_int_len(intmax_t n);
-int			__ft_printf_uint_len(uintmax_t n);
-void		__ft_printf_char(t_printf_parser *p, char c);
+intmax_t	_ft_printf_abs(intmax_t n);
+char		_ft_printf_abs_char(char c);
+int			_ft_printf_int_len(intmax_t n);
+int			_ft_printf_uint_len(uintmax_t n);
+void		_ft_printf_char(t_printf_parser *p, char c);
 
-char		*__ft_printf_strchr(const char *s, char c);
-int			__ft_printf_isdigit(char c);
-size_t		__ft_printf_strnlen(const char *s, size_t n);
-char		*__ft_str_errorname(int error);
+char		*_ft_printf_strchr(const char *s, char c);
+int			_ft_printf_isdigit(char c);
+size_t		_ft_printf_strnlen(const char *s, size_t n);
+char		*_ft_str_errorname(int error);
 
-void		__ft_printf_insert(t_printf_parser *p, char c);
-void		__ft_printf_padding(t_printf_parser *p, int len, int is_start,
-				int is_num);
-void		__ft_printf_sign(t_printf_parser *p, int is_neg, int is_start);
+void		_ft_printf_insert(t_printf_parser *p, char c);
+void		_ft_printf_padding(t_printf_parser *p, int len, int is_start,
+			   int is_num);
+void		_ft_printf_sign(t_printf_parser *p, int is_neg, int is_start);
 
-void		__ft_printf_str(t_printf_parser *p, const char *s);
-void		__ft_printf_strerror(t_printf_parser *p);
-void		__ft_printf_save_pos(t_printf_parser *p, void *save_ptr);
-void		__ft_printf_int(t_printf_parser *p, intmax_t n);
-void		__ft_printf_hex(t_printf_parser *p, uintmax_t n, int mask);
-void		__ft_printf_pointer(t_printf_parser *p, const void *ptr);
-void		__ft_printf_uint(t_printf_parser *p, uintmax_t n);
-void		__ft_printf_invalid_format(t_printf_parser *p);
+void		_ft_printf_str(t_printf_parser *p, const char *s);
+void		_ft_printf_strerror(t_printf_parser *p);
+void		_ft_printf_save_pos(t_printf_parser *p, void *save_ptr);
+void		_ft_printf_int(t_printf_parser *p, intmax_t n);
+void		_ft_printf_hex(t_printf_parser *p, uintmax_t n, int mask);
+void		_ft_printf_pointer(t_printf_parser *p, const void *ptr);
+void		_ft_printf_uint(t_printf_parser *p, uintmax_t n);
+void		_ft_printf_invalid_format(t_printf_parser *p);
 
-int			__ft_printf_parse_width(t_printf_parser *p);
-int			__ft_printf_parse_precision(t_printf_parser *p);
-int			__ft_printf_parse_flags(t_printf_parser *p);
+int			_ft_printf_parse_width(t_printf_parser *p);
+int			_ft_printf_parse_precision(t_printf_parser *p);
+int			_ft_printf_parse_flags(t_printf_parser *p);
 
-void		__ft_printf_handle_hex(t_printf_parser *p, int mask);
-void		__ft_printf_handle_int(t_printf_parser *p);
-void		__ft_printf_handle_uint(t_printf_parser *p);
-int			__ft_printf_handle_conv(t_printf_parser *p);
+void		_ft_printf_handle_hex(t_printf_parser *p, int mask);
+void		_ft_printf_handle_int(t_printf_parser *p);
+void		_ft_printf_handle_uint(t_printf_parser *p);
+int			_ft_printf_handle_conv(t_printf_parser *p);
 
 /* FILE */
 
-t_result	__ft_file_skip_whitespace(t_file *file);
+t_result	_ft_file_skip_whitespace(t_file *file);
+t_result	_ft_file_advance(t_file *file);
+
+inline _Bool	_ft_file_has_data(t_file *file)
+{
+	return (file->curr < file->buf + file->len);
+}
 
 #endif

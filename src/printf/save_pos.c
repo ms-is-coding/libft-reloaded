@@ -6,13 +6,14 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 18:15:44 by smamalig          #+#    #+#             */
-/*   Updated: 2025/03/27 18:16:12 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 10:06:28 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
+#include <stddef.h>
 
-void	__ft_printf_save_pos(t_printf_parser *p, void *save_ptr)
+void	_ft_printf_save_pos(t_printf_parser *p, void *save_ptr)
 {
 	if (p->len_mod == PRINTF_LEN_HH)
 		*(signed char *)save_ptr = (signed char)p->pos;

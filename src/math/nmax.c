@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 22:35:50 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/22 22:43:16 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 09:43:17 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int	ft_nmax(int n, ...)
 		if (temp > max)
 			max = temp;
 	}
+	va_end(args);
 	return (max);
 }

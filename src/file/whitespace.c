@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memmove.c                                          :+:      :+:    :+:   */
+/*   whitespace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 15:45:01 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 09:22:14 by smamalig         ###   ########.fr       */
+/*   Created: 2025/07/18 08:44:07 by smamalig          #+#    #+#             */
+/*   Updated: 2025/07/18 10:17:29 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_internal.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
+t_result	_ft_file_skip_whitespace(t_file *file)
 {
-	const unsigned char	*s;
-	unsigned char		*d;
+	t_result	result;
 
-	s = src;
-	d = dst;
-	if (dst <= src)
-		return (ft_memcpy(dst, src, n));
-	while (n--)
-		d[n] = s[n];
-	return (dst);
+	while (true)
+	{
+		if (ft_isspace(*file->curr))
+			result = _ft_file_advance(file);
+		else
+			break ;
+		if (result != RESULT_OK)
+			return (result);
+	}
+	return (RESULT_OK);
 }

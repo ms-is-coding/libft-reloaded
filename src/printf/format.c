@@ -6,13 +6,13 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:13:55 by smamalig          #+#    #+#             */
-/*   Updated: 2025/05/09 02:43:26 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 09:57:56 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-void	__ft_printf_insert(t_printf_parser *parser, char c)
+void	_ft_printf_insert(t_printf_parser *parser, char c)
 {
 	if (parser->pos < parser->size)
 		parser->dst[parser->pos] = c;
@@ -21,7 +21,7 @@ void	__ft_printf_insert(t_printf_parser *parser, char c)
 	parser->pos++;
 }
 
-void	__ft_printf_padding(t_printf_parser *parser, int len, int is_start,
+void	_ft_printf_padding(t_printf_parser *parser, int len, int is_start,
 	int is_numeric)
 {
 	if (len < 0)
@@ -30,27 +30,27 @@ void	__ft_printf_padding(t_printf_parser *parser, int len, int is_start,
 		return ;
 	if (is_start && is_numeric && parser->flags & PRINTF_FLAG_ZEROPAD)
 		while (parser->width-- - len > 0)
-			__ft_printf_insert(parser, '0');
+			_ft_printf_insert(parser, '0');
 	else
 		while (parser->width-- - len > 0)
-			__ft_printf_insert(parser, ' ');
+			_ft_printf_insert(parser, ' ');
 }
 
-void	__ft_printf_sign(t_printf_parser *parser, int is_neg, int start)
+void	_ft_printf_sign(t_printf_parser *parser, int is_neg, int start)
 {
 	if (start && !(parser->flags & PRINTF_FLAG_ZEROPAD))
 		return ;
 	if (!start && parser->flags & PRINTF_FLAG_ZEROPAD)
 		return ;
 	if (is_neg)
-		__ft_printf_insert(parser, '-');
+		_ft_printf_insert(parser, '-');
 	else if (parser->flags & PRINTF_FLAG_SIGN)
-		__ft_printf_insert(parser, '+');
+		_ft_printf_insert(parser, '+');
 	else if (parser->flags & PRINTF_FLAG_SPPAD)
-		__ft_printf_insert(parser, ' ');
+		_ft_printf_insert(parser, ' ');
 }
 
-int	__ft_printf_parse_flags(t_printf_parser *p)
+int	_ft_printf_parse_flags(t_printf_parser *p)
 {
 	if (*p->fmt == '#')
 		p->flags |= PRINTF_FLAG_ALTERNATE;

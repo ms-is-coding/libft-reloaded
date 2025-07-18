@@ -6,11 +6,12 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:16:46 by smamalig          #+#    #+#             */
-/*   Updated: 2025/04/14 14:12:25 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 10:12:56 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stddef.h>
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {

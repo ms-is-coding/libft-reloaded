@@ -6,7 +6,7 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/07/17 16:39:58 by smamalig         ###   ########.fr        #
+#    Updated: 2025/07/18 10:22:53 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,16 @@ SRCS        = $(shell find $(SRC_DIR) -type f -name '*.c')
 OBJS        = $(patsubst $(SRC_DIR)/%.c, ${OBJ_DIR}/%.o, $(SRCS))
 DEPS        = $(patsubst $(SRC_DIR)/%.c, ${OBJ_DIR}/%.d, $(SRCS))
 INCLUDES    = -Iinclude
+NPROC       = $(shell nproc)
 
 ifeq ($(DEBUG), 1)
-	CFLAGS += -O0 -g3 -D_DEBUG \
+	CFLAGS += -O2 -g3 -D_DEBUG \
 			  -Wpedantic -Wmissing-declarations -Wpadded -Wshadow \
 			  -Wconversion -Wstrict-prototypes -Wmissing-prototypes \
-			  -Wold-style-definition
+			  -Wold-style-definition -Winline -Wsign-conversion -Wundef \
+			  -Wcast-align -Wcast-qual -Wwrite-strings -Wuninitialized \
+			  -Wdouble-promotion -Wfloat-equal -Wvla -Wnull-dereference \
+			  -Wformat=2
 else
 	CFLAGS += -std=c99 -O3 -DNDEBUG -Werror -march=native -flto
 endif
@@ -41,9 +45,15 @@ $(NAME): $(OBJS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@if [ "$(DEBUG)" = "1" ]; then \
+		clang-tidy $< -p . $(CLANG_TIDY_FLAGS); \
+	fi
 
 norm:
-	@-norminette | grep -v "OK"
+	echo $(SRCS) | xargs -n1 -P$(NPROC) norminette
+
+tidy:
+	echo $(SRCS) | xargs -n1 -P$(NPROC) clang-tidy -p .
 
 clean:
 	rm -rf $(OBJ_DIR)
@@ -56,4 +66,4 @@ re: fclean
 
 -include $(DEPS)
 
-.PHONY: all clean fclean re norm
+.PHONY: all clean fclean re norm tidy

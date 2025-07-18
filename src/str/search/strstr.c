@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:55:37 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/13 19:44:57 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 09:20:14 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ char	*ft_strstr(const char *haystack, const char *needle)
 	if (!haystack || !needle)
 		return (NULL);
 	if (!*needle)
-		return ((char *)haystack);
+		return ((char *)(intptr_t)haystack);
 	while (*haystack)
 	{
 		if (*haystack == *needle)
 		{
-			match = (char *)haystack;
+			match = (char *)(intptr_t)haystack;
 			i = 1;
 			while (needle[i] && needle[i] == haystack[i])
 				i++;

@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 16:25:51 by smamalig          #+#    #+#             */
-/*   Updated: 2025/04/14 14:13:18 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 09:18:21 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ char	*ft_strrchr(const char *s, int c)
 
 	save = NULL;
 	if (!c)
-		return ((char *)s + ft_strlen(s));
+		return ((char *)(intptr_t)s + ft_strlen(s));
 	while (*s)
 	{
 		if (*s == (char)c)
-			save = (char *)s;
+			save = (char *)(intptr_t)s;
 		s++;
 	}
 	return (save);

@@ -6,15 +6,15 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:32:50 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/15 10:44:43 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 09:59:05 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*__ft_str_errorname(int error);
+const char	*_ft_str_errorname(int error);
 
 #ifdef USE_ERRNO
 
-char	*__ft_str_errorname(int error)
+const char	*_ft_str_errorname(int error)
 {
 	return ((char *[]){
 		"0", "EPERM", "ENOENT", "ESRCH", "EINTR", "EIO", "ENXIO", "E2BIG",
@@ -44,7 +44,7 @@ char	*__ft_str_errorname(int error)
 
 #else
 
-char	*__ft_str_errorname(int error)
+const char	*_ft_str_errorname(int error)
 {
 	(void)error;
 	return ("");

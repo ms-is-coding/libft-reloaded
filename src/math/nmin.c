@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 23:48:27 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/23 11:01:55 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 09:43:26 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int	ft_nmin(int n, ...)
 		if (temp < min)
 			min = temp;
 	}
+	va_end(args);
 	return (min);
 }

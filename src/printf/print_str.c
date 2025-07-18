@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 18:17:46 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/15 10:47:33 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 10:16:29 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string.h>
 #include <errno.h>
 
-static int	__ft_can_print(t_printf_parser *p)
+static int	_ft_can_print(t_printf_parser *p)
 {
 	if (p->prec == -1)
 		return (1);
@@ -24,34 +24,34 @@ static int	__ft_can_print(t_printf_parser *p)
 	return (0);
 }
 
-void	__ft_printf_str(t_printf_parser *p, const char *s)
+void	_ft_printf_str(t_printf_parser *p, const char *s)
 {
 	if (!s && (p->prec < 0 || p->prec > 5))
 	{
-		__ft_printf_str(p, "(null)");
+		_ft_printf_str(p, "(null)");
 		return ;
 	}
 	else if (!s)
 	{
-		__ft_printf_str(p, "");
+		_ft_printf_str(p, "");
 		return ;
 	}
-	auto int len = (int)__ft_printf_strnlen(s, (size_t)p->prec);
+	auto int len = (int)_ft_printf_strnlen(s, (size_t)p->prec);
 	auto int i = 0;
-	__ft_printf_padding(p, len, PRINTF_START, PRINTF_OTHER);
-	while (i < len && __ft_can_print(p))
-		__ft_printf_insert(p, s[i++]);
-	__ft_printf_padding(p, len, PRINTF_END, PRINTF_OTHER);
+	_ft_printf_padding(p, len, PRINTF_START, PRINTF_OTHER);
+	while (i < len && _ft_can_print(p))
+		_ft_printf_insert(p, s[i++]);
+	_ft_printf_padding(p, len, PRINTF_END, PRINTF_OTHER);
 }
 
 #ifdef USE_ERRNO
 
-void	__ft_printf_strerror(t_printf_parser *p)
+void	_ft_printf_strerror(t_printf_parser *p)
 {
 	if (p->flags & PRINTF_FLAG_ALTERNATE)
-		return (__ft_printf_str(p, __ft_str_errorname(errno)));
+		return (_ft_printf_str(p, _ft_str_errorname(errno)));
 	else
-		return (__ft_printf_str(p, strerror(errno)));
+		return (_ft_printf_str(p, strerror(errno)));
 }
 
 #endif

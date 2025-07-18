@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 16:31:49 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/15 10:11:35 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/07/18 10:15:51 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 #include <stdio.h>
 
-void	__ft_printf_invalid_format(t_printf_parser *p)
+void	_ft_printf_invalid_format(t_printf_parser *p)
 {
 	p->prec = p->spec_pos;
 	p->spec_buf[p->spec_pos] = 0;
 	p->width = -1;
-	__ft_printf_str(p, p->spec_buf);
+	_ft_printf_str(p, p->spec_buf);
 }
 
 int	ft_vsnprintf(char *dst, size_t size, const char *fmt, va_list ap)
@@ -33,16 +33,16 @@ int	ft_vsnprintf(char *dst, size_t size, const char *fmt, va_list ap)
 	p.fmt = fmt;
 	p.size = size;
 	va_copy(p.ap, ap);
-	__ft_printf_init_parser(&p);
+	_ft_printf_init_parser(&p);
 	while (p.curr(&p))
 	{
-		__ft_printf_reset_parser(&p);
+		_ft_printf_reset_parser(&p);
 		while (p.curr(&p) && p.curr(&p) != '%')
-			__ft_printf_insert(&p, *p.fmt++);
+			_ft_printf_insert(&p, *p.fmt++);
 		if (!p.curr(&p))
 			break ;
 		p.next(&p);
-		if (__ft_printf_handle_conv(&p))
+		if (_ft_printf_handle_conv(&p))
 			return (va_end(p.ap), -1);
 	}
 	if (p.pos < p.size)
