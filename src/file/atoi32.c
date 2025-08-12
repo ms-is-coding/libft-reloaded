@@ -6,12 +6,17 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 08:48:03 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 10:27:35 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/08/01 11:41:18 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libft_internal.h"
+
+static inline _Bool	_ft_file_has_data(t_file *file)
+{
+	return (file->curr < file->buf + file->len);
+}
 
 static t_result	temp(t_file *file, int32_t *ret_ptr, int sign)
 {
@@ -41,7 +46,6 @@ t_result	ft_file_atoi32(t_file *file, int32_t *ret_ptr)
 	int			sign;
 	t_result	result;
 
-	ft_printf("Called %s\n", __func__);
 	if (ft_file_eof(file))
 		return (RESULT_EOF);
 	*ret_ptr = 0;

@@ -6,13 +6,13 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/07/18 10:22:53 by smamalig         ###   ########.fr        #
+#    Updated: 2025/08/01 00:24:02 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = libft.a
 CC          = cc
-CFLAGS      = -Wall -Wextra -MMD -MP -O0
+CFLAGS      = -Wall -Wextra -MMD -MP -std=c99
 SRC_DIR     = src
 OBJ_DIR     = obj
 SRCS        = $(shell find $(SRC_DIR) -type f -name '*.c')
@@ -22,15 +22,22 @@ INCLUDES    = -Iinclude
 NPROC       = $(shell nproc)
 
 ifeq ($(DEBUG), 1)
-	CFLAGS += -O2 -g3 -D_DEBUG \
-			  -Wpedantic -Wmissing-declarations -Wpadded -Wshadow \
-			  -Wconversion -Wstrict-prototypes -Wmissing-prototypes \
-			  -Wold-style-definition -Winline -Wsign-conversion -Wundef \
-			  -Wcast-align -Wcast-qual -Wwrite-strings -Wuninitialized \
-			  -Wdouble-promotion -Wfloat-equal -Wvla -Wnull-dereference \
-			  -Wformat=2
+	CFLAGS += -Og -g3 -D_DEBUG \
+			-Wpedantic -Wmissing-declarations -Wpadded -Wshadow \
+			-Wconversion -Wstrict-prototypes -Wmissing-prototypes \
+			-Wold-style-definition -Winline -Wsign-conversion -Wundef \
+			-Wcast-align -Wcast-qual -Wwrite-strings -Wuninitialized \
+			-Wdouble-promotion -Wfloat-equal -Wvla -Wnull-dereference \
+			-Wformat=2 -fstack-protector-strong
+	ifeq ($(SANITIZE), 1)
+		CFLAGS += -fsanitize=address -fsanitize=undefined -fsanitize=leak
+	endif
 else
-	CFLAGS += -std=c99 -O3 -DNDEBUG -Werror -march=native -flto
+	CFLAGS += -Werror
+endif
+
+ifeq ($(RELEASE), 1)
+	CFLAGS += -O3 -DNDEBUG -march=native -flto
 endif
 
 ifeq ($(USE_ERRNO), 1)
@@ -45,9 +52,6 @@ $(NAME): $(OBJS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@if [ "$(DEBUG)" = "1" ]; then \
-		clang-tidy $< -p . $(CLANG_TIDY_FLAGS); \
-	fi
 
 norm:
 	echo $(SRCS) | xargs -n1 -P$(NPROC) norminette

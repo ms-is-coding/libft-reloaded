@@ -6,11 +6,16 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 13:26:54 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 09:58:43 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/08/01 11:44:01 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
+
+static inline _Bool	_ft_file_has_data(t_file *file)
+{
+	return (file->curr < file->buf + file->len);
+}
 
 t_result	ft_file_init(t_file *file, int fd)
 {

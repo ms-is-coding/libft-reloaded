@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:13:41 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 09:57:33 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/08/01 11:41:38 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char		*_ft_str_errorname(int error);
 
 void		_ft_printf_insert(t_printf_parser *p, char c);
 void		_ft_printf_padding(t_printf_parser *p, int len, int is_start,
-			   int is_num);
+				int is_num);
 void		_ft_printf_sign(t_printf_parser *p, int is_neg, int is_start);
 
 void		_ft_printf_str(t_printf_parser *p, const char *s);
@@ -108,10 +108,5 @@ int			_ft_printf_handle_conv(t_printf_parser *p);
 
 t_result	_ft_file_skip_whitespace(t_file *file);
 t_result	_ft_file_advance(t_file *file);
-
-inline _Bool	_ft_file_has_data(t_file *file)
-{
-	return (file->curr < file->buf + file->len);
-}
 
 #endif
