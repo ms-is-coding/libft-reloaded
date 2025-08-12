@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 08:39:44 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/08/04 12:36:58 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,25 @@ void		ft_putnbr_fd(int n, int fd);
 /* ************************************************************************** */
 /* MATH                                                                       */
 /* ************************************************************************** */
+
+typedef struct s_vec3
+{
+	double	x;
+	double	y;
+	double	z;
+}	t_vec3;
+
+typedef struct s_vec3f
+{
+	float	x;
+	float	y;
+	float	z;
+}	t_vec3f;
+
+typedef struct s_mat3f
+{
+	float	m[3][3];
+}	t_mat3f;
 
 int			ft_abs(int n);
 int			ft_max(int a, int b);
@@ -272,8 +291,6 @@ typedef struct s_file
 	char			*curr;
 	char			buf[FILE_BUFFER_SIZE];
 }	t_file;
-
-t_result	try(t_result res);
 
 t_result	ft_file_init(t_file *file, int fd);
 t_result	ft_file_i8(t_file *file, uint8_t *ret);
