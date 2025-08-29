@@ -6,7 +6,7 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/07/18 10:22:53 by smamalig         ###   ########.fr        #
+#    Updated: 2025/08/27 20:42:27 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ ifeq ($(DEBUG), 1)
 			  -Wdouble-promotion -Wfloat-equal -Wvla -Wnull-dereference \
 			  -Wformat=2
 else
-	CFLAGS += -std=c99 -O3 -DNDEBUG -Werror -march=native -flto
+	CFLAGS += -std=c99 -O3 -DNDEBUG -Werror -march=native
 endif
 
 ifeq ($(USE_ERRNO), 1)
@@ -45,9 +45,6 @@ $(NAME): $(OBJS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@if [ "$(DEBUG)" = "1" ]; then \
-		clang-tidy $< -p . $(CLANG_TIDY_FLAGS); \
-	fi
 
 norm:
 	echo $(SRCS) | xargs -n1 -P$(NPROC) norminette
