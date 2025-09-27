@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 08:48:03 by smamalig          #+#    #+#             */
-/*   Updated: 2025/08/01 11:41:18 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/09/28 00:05:53 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_result	temp(t_file *file, int32_t *ret_ptr, int sign)
 		digit = *file->curr - '0';
 		if (*ret_ptr > (INT_MAX - digit) / 10)
 			return (RESULT_OVERFLOW);
-		*ret_ptr = *ret_ptr * 10 + digit;
+		*ret_ptr = (*ret_ptr << 3) + (*ret_ptr << 1) + digit;
 		if (_ft_file_advance(file) != RESULT_OK)
 			return (RESULT_ERROR);
 		had_digit = true;

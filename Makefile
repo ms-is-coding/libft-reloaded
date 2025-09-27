@@ -6,7 +6,7 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/08/01 00:24:02 by smamalig         ###   ########.fr        #
+#    Updated: 2025/09/27 21:58:32 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ else
 endif
 
 ifeq ($(RELEASE), 1)
-	CFLAGS += -O3 -DNDEBUG -march=native -flto
+	CFLAGS += -O3 -DNDEBUG -march=native
 endif
 
 ifeq ($(USE_ERRNO), 1)

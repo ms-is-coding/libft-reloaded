@@ -6,21 +6,24 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:43:48 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/15 10:28:33 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/09/27 22:39:07 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <assert.h>
+#include <stdlib.h>
+#include <stddef.h>
 
 static int	alloc_sub(const char *s, const char *start, int i, char **collector)
 {
+	ptrdiff_t	diff;
+	size_t		len;
+
 	if (!collector)
 		return (0);
-	assert(s >= start);
-	auto ptrdiff_t diff = s - start;
-	assert(diff >= 0);
-	auto size_t len = (size_t)diff;
+	diff = s - start;
+	len = (size_t)diff;
 	collector[i] = malloc(len + 1ul);
 	if (!collector[i])
 		return (1);

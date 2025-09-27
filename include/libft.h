@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 08:39:44 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/09/27 21:54:33 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,8 +272,6 @@ typedef struct s_file
 	char			*curr;
 	char			buf[FILE_BUFFER_SIZE];
 }	t_file;
-
-t_result	try(t_result res);
 
 t_result	ft_file_init(t_file *file, int fd);
 t_result	ft_file_i8(t_file *file, uint8_t *ret);
