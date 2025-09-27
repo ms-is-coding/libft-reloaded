@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.hpp                                              ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
+/*   test.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ms <smamalig@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 00:29:03 by ms                #+#    #+#             */
-/*   Updated: 2025/06/04 15:45:55 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
+/*   Updated: 2025/08/04 16:30:43 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ extern void test_io();
 extern void test_list();
 extern void test_math();
 extern void test_mem();
+extern void test_file();
 extern void test_str_compare();
 extern void test_str_concat();
 extern void test_str_copy();
@@ -49,11 +50,21 @@ struct ExpectResult {
 };
 
 template <typename T, typename K>
-using ExpectResults = std::vector<ExpectResult<T, K>>;
+class ExpectResults : public std::vector<ExpectResult<T, K>> {
+public:
+	void add(ExpectResult<T, K> x)
+	{
+		if (!x.error)
+			return;
+		this->push_back(x);
+	}
+};
 
-template <typename T, typename K>
-extern void test(const char *desc, void (*test_fn)(ExpectResults<T, K>&))
+template <typename T, typename K, typename F>
+extern void test(const char *desc, F test_fn)
 {
+	static_assert(std::is_invocable_v<F, ExpectResults<T, K>&>,
+		"test_fn must be callable with ExpectResults<T, K>&");
 	ExpectResults<T, K> res;
 	test_fn(res);
 	if (!res.size()) {

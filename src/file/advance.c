@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 08:45:16 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 10:10:59 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:38:59 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static t_result	ft_file_fill(t_file *file)
 	ssize_t	bytes_read;
 	size_t	remaining;
 
-	if (file->curr > file->buf)
+	if (file->curr - 1 > file->buf)
 	{
-		remaining = (size_t)(file->len - (size_t)(file->curr - file->buf));
+		remaining = (size_t)(file->len - (size_t)(file->curr - file->buf) - 1);
 		ft_memmove(file->buf, file->curr, remaining);
 		file->curr = file->buf;
 		file->len = (unsigned int)remaining;
@@ -33,7 +33,7 @@ static t_result	ft_file_fill(t_file *file)
 	bytes_read = read(file->fd, file->buf + file->len,
 			FILE_BUFFER_SIZE - file->len);
 	if (bytes_read < 0)
-		return (RESULT_ERROR);
+		return (RESULT_READ_ERROR);
 	if (bytes_read == 0)
 	{
 		file->eof = true;
