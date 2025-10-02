@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/09/28 00:18:23 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/02 22:39:03 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ typedef union u_any
 	int64_t		i64;
 	uint32_t	u32;
 	int32_t		i32;
-	_Float32	f32;
-	_Float64	f64;
+	float		f32;
+	double		f64;
 }	t_any;
 
 typedef struct s_value
