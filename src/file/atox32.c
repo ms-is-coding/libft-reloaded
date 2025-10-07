@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 08:39:18 by smamalig          #+#    #+#             */
-/*   Updated: 2025/08/01 11:41:59 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/05 20:33:44 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static inline _Bool	_ft_file_has_data(t_file *file)
 	return (file->curr < file->buf + file->len);
 }
 
-static inline t_result	_ft_file_0x(t_file *file, _Bool optional)
+static t_result	_ft_file_0x(t_file *file, _Bool optional)
 {
 	t_result	r;
 

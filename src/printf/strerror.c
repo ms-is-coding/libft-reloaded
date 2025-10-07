@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:32:50 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 09:59:05 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/05 20:24:23 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ const char	*_ft_str_errorname(int error);
 
 const char	*_ft_str_errorname(int error)
 {
-	return ((char *[]){
+	return ((const char *[]){
 		"0", "EPERM", "ENOENT", "ESRCH", "EINTR", "EIO", "ENXIO", "E2BIG",
 		"ENOEXEC", "EBADF", "ECHILD", "EAGAIN", "ENOMEM", "EACCES", "EFAULT",
 		"ENOTBLK", "EBUSY", "EEXIST", "EXDEV", "ENODEV", "ENOTDIR", "EISDIR",

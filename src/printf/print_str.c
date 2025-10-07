@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 18:17:46 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 10:16:29 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/05 20:34:23 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ void	_ft_printf_str(t_printf_parser *p, const char *s)
 void	_ft_printf_strerror(t_printf_parser *p)
 {
 	if (p->flags & PRINTF_FLAG_ALTERNATE)
-		return (_ft_printf_str(p, _ft_str_errorname(errno)));
-	else
-		return (_ft_printf_str(p, strerror(errno)));
+	{
+		_ft_printf_str(p, _ft_str_errorname(errno));
+		return ;
+	}
+	_ft_printf_str(p, strerror(errno));
 }
 
 #endif
