@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/06 02:11:38 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/19 18:02:54 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ char		*ft_strjoin(const char *s1, const char *s2);
 char		*ft_strtrim(const char *s, const char *trim);
 char		**ft_split(const char *s, char delim);
 char		*ft_itoa(int n);
+char		*ft_itoa_unsafe(int n);
 char		*ft_strmapi(const char *s, char (*f)(size_t, char));
 void		ft_striteri(char *s, void (*f)(size_t, char *));
 
