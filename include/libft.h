@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/19 18:02:54 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/21 22:24:17 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef enum e_result
 	RESULT_EOF,
 	RESULT_INVAL,
 	RESULT_READ_ERROR,
+	RESULT_RDONLY,
 	RESULT_UNKNOWN
 }	t_result;
 
