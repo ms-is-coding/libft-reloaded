@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/21 22:24:17 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/28 12:45:11 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_value
 void		*ft_calloc(size_t n, size_t size);
 void		ft_free(void *ptr);
 void		*ft_malloc(size_t size);
-void		*ft_realloc(void *ptr, size_t old_size, size_t new_size);
+void		*ft_realloc(void *ptr, size_t size);
 
 /* ************************************************************************** */
 /* RANDOM                                                                     */
@@ -275,7 +275,12 @@ typedef struct s_file
 	char			buf[FILE_BUFFER_SIZE];
 }	t_file;
 
+// internal use only
+t_result	_ft_file_refill(t_file *file);
+
 t_result	ft_file_init(t_file *file, int fd);
+
+t_result	ft_file_line(t_file *file, char **line);
 t_result	ft_file_i8(t_file *file, uint8_t *ret);
 t_result	ft_file_u8(t_file *file, uint8_t *ret);
 t_result	ft_file_atoi32(t_file *file, int32_t *ret);
