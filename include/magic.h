@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 01:41:08 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/06 01:50:01 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/30 10:47:00 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define MAGIC_H
 
 # include <stdint.h>
+
+# define DBL_MAX_INTEGER 9007199254740992.0
 
 # if UINTPTR_MAX == 0xfffffffful
 

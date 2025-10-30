@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 23:51:08 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 10:16:03 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/28 22:47:09 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ intmax_t	_ft_printf_abs(intmax_t n)
 char	_ft_printf_abs_char(char c)
 {
 	if (c < 0)
-		return (-c);
+		return ((char)-c);
 	return (c);
 }
 

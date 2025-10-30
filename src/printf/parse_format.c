@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 20:17:29 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 10:17:04 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/30 11:01:57 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,10 @@
 #include <errno.h>
 #include <limits.h>
 
-#ifdef USE_ERRNO
-
 static void	_ft_printf_error(int error)
 {
 	errno = error;
 }
-
-#else
-
-static void	_ft_printf_error(int error)
-{
-	(void)error;
-}
-
-#endif
 
 int	_ft_printf_parse_precision(t_printf_parser *p)
 {

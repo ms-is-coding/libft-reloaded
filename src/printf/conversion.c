@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 20:09:02 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 10:15:09 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/28 22:45:58 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static int	_ft_printf_set_mod(t_printf_parser *p, const char *s, int mod)
 	{
 		p->len_mod = mod;
 		p->fmt += i;
+		return (1);
 	}
 	return (0);
 }
@@ -53,8 +54,6 @@ static void	_ft_printf_len_mod(t_printf_parser *p)
 		return ;
 }
 
-#ifdef USE_ERRNO
-
 static void	_ft_printf_conversion(t_printf_parser *p)
 {
 	if (p->match(p, 'n'))
@@ -80,34 +79,6 @@ static void	_ft_printf_conversion(t_printf_parser *p)
 	else
 		_ft_printf_invalid_format(p);
 }
-
-#else
-
-static void	_ft_printf_conversion(t_printf_parser *p)
-{
-	if (p->match(p, 'n'))
-		_ft_printf_save_pos(p, va_arg(p->ap, void *));
-	else if (p->match(p, 's'))
-		_ft_printf_str(p, va_arg(p->ap, const char *));
-	else if (p->match(p, '%'))
-		_ft_printf_insert(p, '%');
-	else if (p->match(p, 'c'))
-		_ft_printf_char(p, (char)va_arg(p->ap, int));
-	else if (p->match(p, 'i') || p->match(p, 'd'))
-		_ft_printf_handle_int(p);
-	else if (p->match(p, 'u'))
-		_ft_printf_handle_uint(p);
-	else if (p->match(p, 'p'))
-		_ft_printf_pointer(p, va_arg(p->ap, const void *));
-	else if (p->match(p, 'x'))
-		_ft_printf_handle_hex(p, 0x20);
-	else if (p->match(p, 'X'))
-		_ft_printf_handle_hex(p, 0);
-	else
-		_ft_printf_invalid_format(p);
-}
-
-#endif
 
 int	_ft_printf_handle_conv(t_printf_parser *p)
 {

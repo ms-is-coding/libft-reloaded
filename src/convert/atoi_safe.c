@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 22:13:22 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/02 20:23:55 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/28 23:00:40 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@
 
 int	ft_atoi_safe(const char *s)
 {
-	auto int value = 0;
-	auto int sign = 1;
+	int	value;
+	int	sign;
+
+	value = 0;
+	sign = 1;
 	while (ft_isspace(*s))
 		s++;
 	if (*s == '+' || *s == '-')

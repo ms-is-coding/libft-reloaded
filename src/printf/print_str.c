@@ -6,14 +6,13 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 18:17:46 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/05 20:34:23 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/30 11:04:05 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
-
-#include <string.h>
 #include <errno.h>
+#include <string.h>
 
 static int	_ft_can_print(t_printf_parser *p)
 {
@@ -26,6 +25,9 @@ static int	_ft_can_print(t_printf_parser *p)
 
 void	_ft_printf_str(t_printf_parser *p, const char *s)
 {
+	size_t	len;
+	size_t	i;
+
 	if (!s && (p->prec < 0 || p->prec > 5))
 	{
 		_ft_printf_str(p, "(null)");
@@ -36,15 +38,13 @@ void	_ft_printf_str(t_printf_parser *p, const char *s)
 		_ft_printf_str(p, "");
 		return ;
 	}
-	auto int len = (int)_ft_printf_strnlen(s, (size_t)p->prec);
-	auto int i = 0;
-	_ft_printf_padding(p, len, PRINTF_START, PRINTF_OTHER);
-	while (i < len && _ft_can_print(p))
+	len = _ft_printf_strnlen(s, (size_t)p->prec);
+	i = 0;
+	_ft_printf_padding(p, (int)len, PRINTF_START, PRINTF_OTHER);
+	while (i < len && s[i] && _ft_can_print(p))
 		_ft_printf_insert(p, s[i++]);
-	_ft_printf_padding(p, len, PRINTF_END, PRINTF_OTHER);
+	_ft_printf_padding(p, (int)len, PRINTF_END, PRINTF_OTHER);
 }
-
-#ifdef USE_ERRNO
 
 void	_ft_printf_strerror(t_printf_parser *p)
 {
@@ -55,5 +55,3 @@ void	_ft_printf_strerror(t_printf_parser *p)
 	}
 	_ft_printf_str(p, strerror(errno));
 }
-
-#endif

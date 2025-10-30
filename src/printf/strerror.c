@@ -6,13 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:32:50 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/05 20:24:23 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/30 11:03:08 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-const char	*_ft_str_errorname(int error);
-
-#ifdef USE_ERRNO
+#include "libft_internal.h"
 
 const char	*_ft_str_errorname(int error)
 {
@@ -41,13 +39,3 @@ const char	*_ft_str_errorname(int error)
 		"ENOKEY", "EKEYEXPIRED", "EKEYREVOKED", "EKEYREJECTED", "EOWNERDEAD",
 		"ENOTRECOVERABLE", "ERFKILL", "EHWPOISION"}[error]);
 }
-
-#else
-
-const char	*_ft_str_errorname(int error)
-{
-	(void)error;
-	return ("");
-}
-
-#endif
