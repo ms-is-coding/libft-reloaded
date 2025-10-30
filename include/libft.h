@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/28 12:45:11 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/30 18:09:53 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,7 +280,6 @@ t_result	_ft_file_refill(t_file *file);
 
 t_result	ft_file_init(t_file *file, int fd);
 
-t_result	ft_file_line(t_file *file, char **line);
 t_result	ft_file_i8(t_file *file, uint8_t *ret);
 t_result	ft_file_u8(t_file *file, uint8_t *ret);
 t_result	ft_file_atoi32(t_file *file, int32_t *ret);
