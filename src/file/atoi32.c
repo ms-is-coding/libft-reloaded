@@ -6,13 +6,14 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 08:48:03 by smamalig          #+#    #+#             */
-/*   Updated: 2025/09/28 00:16:25 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/28 23:20:29 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libft_internal.h"
 
+__attribute__((__always_inline__))
 static inline _Bool	_ft_file_has_data(t_file *file)
 {
 	return (file->curr < file->buf + file->len);
@@ -33,7 +34,7 @@ static t_result	temp(t_file *file, int32_t *ret_ptr, int sign)
 		if ((sign == -1 && *ret_ptr < (INT_MIN + digit) / 10)
 			|| (sign == 1 && *ret_ptr > (INT_MAX - digit) / 10))
 			overflow = true;
-		*ret_ptr = (*ret_ptr << 3) + (*ret_ptr << 1) + sign * digit;
+		*ret_ptr = *ret_ptr * 10 + sign * digit;
 		result = _ft_file_advance(file);
 		if (result == RESULT_READ_ERROR)
 			return (result);

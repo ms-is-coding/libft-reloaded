@@ -6,13 +6,14 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 08:39:18 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/05 20:33:44 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/10/28 23:21:12 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libft_internal.h"
 
+__attribute__((__always_inline__))
 static inline _Bool	_ft_file_has_data(t_file *file)
 {
 	return (file->curr < file->buf + file->len);
