@@ -6,11 +6,12 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 14:37:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/30 09:34:50 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/02 13:52:57 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <errno.h>
 
 // reverse engineering glibc malloc lol
 static size_t	ft_usable_size(void *ptr)
@@ -34,7 +35,8 @@ void	*ft_realloc(void *ptr, size_t size)
 	if (size == 0)
 	{
 		ft_free(ptr);
-		return (ptr);
+		errno = ENOMEM;
+		return (NULL);
 	}
 	old_size = ft_usable_size(ptr);
 	if (size <= old_size)

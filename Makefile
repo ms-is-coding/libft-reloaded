@@ -6,7 +6,7 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/10/30 09:15:33 by smamalig         ###   ########.fr        #
+#    Updated: 2025/11/01 11:23:08 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIB_DIR			:= lib
 BUILD_DIR		:= build
 
 CC				:= cc
-CFLAGS			:= -Wall -Wextra -MMD -MP -std=gnu17
+CFLAGS			:= -Wall -Wextra -MMD -MP -std=gnu23
 CFLAGS_DEBUG	:= -Og -g3 -Wshadow -Wpadded -Wconversion -Wstrict-prototypes \
 					-Wmissing-declarations -Wstrict-prototypes -Wundef \
 					-Wmissing-prototypes -Wold-style-definition -Winline \

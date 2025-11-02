@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/30 18:09:53 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/01 11:42:33 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,13 @@ typedef struct s_value
 /* ALLOC                                                                      */
 /* ************************************************************************** */
 
-void		*ft_calloc(size_t n, size_t size);
+void		*ft_calloc(size_t n, size_t size)
+			__attribute__((__warn_unused_result__));
 void		ft_free(void *ptr);
-void		*ft_malloc(size_t size);
-void		*ft_realloc(void *ptr, size_t size);
+void		*ft_malloc(size_t size)
+			__attribute__((__warn_unused_result__));
+void		*ft_realloc(void *ptr, size_t size)
+			__attribute__((__warn_unused_result__));
 
 /* ************************************************************************** */
 /* RANDOM                                                                     */
@@ -231,8 +234,10 @@ typedef struct s_vector
 
 t_value		ft_gen_val(t_type type, t_any value);
 
-t_result	ft_vector_init(t_vector *vec, size_t size);
-t_result	ft_vector_resize(t_vector *vec, size_t size);
+t_result	ft_vector_init(t_vector *vec, size_t size)
+			__attribute__((__warn_unused_result__));
+t_result	ft_vector_resize(t_vector *vec, size_t size)
+			__attribute__((__warn_unused_result__));
 void		ft_vector_free(t_vector *vec);
 void		ft_vector_foreach(t_vector *vec,
 				void (*fn)(size_t idx, t_value data));
@@ -244,8 +249,10 @@ _Bool		ft_vector_some(t_vector *vec,
 				_Bool (*fn)(size_t idx, t_value data));
 t_value		ft_vector_pop(t_vector *vec);
 t_value		ft_vector_shift(t_vector *vec);
-t_result	ft_vector_push(t_vector *vec, t_value value);
-t_result	ft_vector_unshift(t_vector *vec, t_value value);
+t_result	ft_vector_push(t_vector *vec, t_value value)
+			__attribute__((__warn_unused_result__));
+t_result	ft_vector_unshift(t_vector *vec, t_value value)
+			__attribute__((__warn_unused_result__));
 t_value		ft_vector_at(t_vector *vec, ssize_t idx);
 
 /* ************************************************************************** */
@@ -278,7 +285,8 @@ typedef struct s_file
 // internal use only
 t_result	_ft_file_refill(t_file *file);
 
-t_result	ft_file_init(t_file *file, int fd);
+t_result	ft_file_init(t_file *file, int fd)
+			__attribute__((__warn_unused_result__));
 
 t_result	ft_file_i8(t_file *file, uint8_t *ret);
 t_result	ft_file_u8(t_file *file, uint8_t *ret);
