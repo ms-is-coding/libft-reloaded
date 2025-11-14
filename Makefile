@@ -6,7 +6,7 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/11/01 11:23:08 by smamalig         ###   ########.fr        #
+#    Updated: 2025/11/14 13:52:48 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ CXXFLAGS		:= -O3
 
 INCLUDES		:= -Iinclude
 NPROC			:= $(shell nproc)
-PHONY			:=
 
 ifeq ($(MODE), release)
 	CFLAGS += $(CFLAGS_RELEASE)
@@ -62,6 +61,10 @@ DEPS		:= $(patsubst $(SRC_DIR)/%.c, ${OBJ_DIR}/%.d, $(SRCS))
 .PHONY: all
 all: $(NAME)
 	@$(MAKE) postbuild --no-print-directory
+
+
+.PHONY: default
+default: all
 
 
 .PHONY: release
