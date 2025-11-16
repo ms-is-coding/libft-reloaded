@@ -6,7 +6,7 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/11/16 15:18:53 by smamalig         ###   ########.fr        #
+#    Updated: 2025/11/16 15:21:24 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 .PHONY: norm
 norm:
-	echo $(SRCS) | xargs -n1 -P$(NPROC) norminette | grep -v OK
+	echo $(SRCS) | xargs -n1 -P$(NPROC) norminette
 
 
 .PHONY: tidy
