@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:41:42 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/06 02:08:54 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/16 15:13:51 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include <stdint.h>
 
+__attribute__((no_sanitize("undefined")))
 void	*ft_mempcpy(void *dst, const void *src, size_t n)
 {
 	const uint8_t	*s;

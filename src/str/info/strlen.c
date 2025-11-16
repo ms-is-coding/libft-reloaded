@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:33:00 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/06 01:48:44 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/16 15:14:07 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static	int	run_check(const char *s, size_t *i_ptr)
 	return (0);
 }
 
+__attribute__((no_sanitize_address))
 size_t	ft_strlen(const char *s)
 {
 	const uintptr_t	*fast;
