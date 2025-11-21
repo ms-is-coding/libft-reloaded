@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 23:32:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/11/01 11:42:33 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/21 17:13:21 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,15 @@ typedef struct s_value
 
 void		*ft_calloc(size_t n, size_t size)
 			__attribute__((__warn_unused_result__));
+
+// Warning: only accepts pointers allocated through `ft_malloc`
 void		ft_free(void *ptr);
+
+// Warning: this allocation must be freed using `ft_free`
 void		*ft_malloc(size_t size)
 			__attribute__((__warn_unused_result__));
+
+// Warning: only accepts pointers allocated through `ft_malloc`
 void		*ft_realloc(void *ptr, size_t size)
 			__attribute__((__warn_unused_result__));
 

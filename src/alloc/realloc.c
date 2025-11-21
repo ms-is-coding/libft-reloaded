@@ -6,22 +6,16 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 14:37:58 by smamalig          #+#    #+#             */
-/*   Updated: 2025/11/02 13:52:57 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/21 17:10:35 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <errno.h>
 
-// reverse engineering glibc malloc lol
-static size_t	ft_usable_size(void *ptr)
+static inline size_t	ft_ptr_size(void *ptr)
 {
-	size_t	size;
-	bool	is_mmapped;
-
-	size = ((size_t *)ptr)[-1];
-	is_mmapped = (size & 0x2) >> 1;
-	return ((size & ~0x7ul) - (sizeof(size_t) << is_mmapped));
+	return (((size_t *)ptr)[-1]);
 }
 
 // see `man 3p realloc`
@@ -38,7 +32,7 @@ void	*ft_realloc(void *ptr, size_t size)
 		errno = ENOMEM;
 		return (NULL);
 	}
-	old_size = ft_usable_size(ptr);
+	old_size = ft_ptr_size(ptr);
 	if (size <= old_size)
 		return (ptr);
 	alloc = ft_malloc(size);
