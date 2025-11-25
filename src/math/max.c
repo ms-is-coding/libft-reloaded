@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 22:32:31 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/22 22:44:06 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:24:14 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "core/math.h"
 
 int	ft_max(int a, int b)
 {

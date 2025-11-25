@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 16:33:13 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/23 20:21:22 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:21:25 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_printf.h"
+#include "core/stdio.h"
 
 int	ft_snprintf(char *dst, size_t size, const char *fmt, ...)
 {

@@ -6,13 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 18:34:46 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 10:09:52 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:20:37 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_internal.h"
-#include <stddef.h>
-#include <stdint.h>
+#include "printf/printf_internal.h"
 
 static void	_ft_printf_hex_internal(t_printf_parser *p, uintmax_t n,
 	int mask, int iters)

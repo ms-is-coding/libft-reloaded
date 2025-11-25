@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 16:50:31 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/22 22:43:55 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:24:02 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "core/math.h"
 
 int	ft_abs(int n)
 {

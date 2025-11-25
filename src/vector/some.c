@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
-/*   some.c                                                ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
-/*                                                         ⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠁⢀⣼⣿⠟⠀   */
-/*   By: smamalig <smamalig@student.42.fr>                 ⠀⣴⣿⣟⣁⣀⣀⣀⡀⠀⣴⣿⡟⠁⢀⠀   */
-/*                                                         ⠀⠿⠿⠿⠿⠿⣿⣿⡇⠀⣿⣿⣇⣴⣿⠀   */
-/*   Created: 2025/06/04 17:54:04 by smamalig              ⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀   */
-/*   Updated: 2025/06/04 17:54:30 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
+/*                                                        :::      ::::::::   */
+/*   some.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/25 14:51:27 by smamalig          #+#    #+#             */
+/*   Updated: 2025/11/25 14:52:33 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vector/vector_internal.h"
+#include "vector/vector.h"
 
-_Bool	ft_vector_some(t_vector *vec, _Bool (*fn)(size_t, t_value))
+bool	vec_some(t_vec *v, bool (*fn)(size_t, void *, void *), void *userdata)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < vec->length)
+	while (i < v->length)
 	{
-		if (fn(i, vec->data[(vec->offset + i) % vec->capacity]))
+		if (fn(i, v->data[(v->offset + i) % v->capacity], userdata))
 			return (true);
 		i++;
 	}

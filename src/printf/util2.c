@@ -6,12 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 23:29:07 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 09:58:12 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:21:56 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_internal.h"
-#include <stddef.h>
+#include "printf/printf_internal.h"
 
 char	*_ft_printf_strchr(const char *s, char c)
 {

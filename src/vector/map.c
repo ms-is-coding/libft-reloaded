@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
-/*   map.c                                                 ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
-/*                                                         ⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠁⢀⣼⣿⠟⠀   */
-/*   By: smamalig <smamalig@student.42.fr>                 ⠀⣴⣿⣟⣁⣀⣀⣀⡀⠀⣴⣿⡟⠁⢀⠀   */
-/*                                                         ⠀⠿⠿⠿⠿⠿⣿⣿⡇⠀⣿⣿⣇⣴⣿⠀   */
-/*   Created: 2025/06/04 17:46:05 by smamalig              ⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀   */
-/*   Updated: 2025/06/04 17:48:15 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/25 14:44:35 by smamalig          #+#    #+#             */
+/*   Updated: 2025/11/25 14:47:19 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vector/vector_internal.h"
+#include "vector/vector.h"
+#include <stddef.h>
 
-void	ft_vector_map(t_vector *vec, t_value (*fn)(size_t, t_value))
+void	vec_map(t_vec *v, void *(*fn)(size_t, void *, void *), void *userdata)
 {
 	size_t	i;
-	t_value	*cell;
+	void	**cell;
 
 	i = 0;
-	while (i < vec->length)
+	while (i < v->length)
 	{
-		cell = vec->data + (vec->offset + i) % vec->capacity;
-		*cell = fn(i, *cell);
+		cell = v->data + (v->offset + i) % v->capacity;
+		*cell = fn(i, *cell, userdata);
 		i++;
 	}
 }

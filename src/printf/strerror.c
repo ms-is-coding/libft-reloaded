@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:32:50 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/30 11:03:08 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:21:43 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_internal.h"
+#include "printf/printf_internal.h"
 
 const char	*_ft_str_errorname(int error)
 {

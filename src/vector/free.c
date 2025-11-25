@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 17:27:51 by smamalig          #+#    #+#             */
-/*   Updated: 2025/11/21 17:16:45 by smamalig         ###   ########.fr       */
+/*   Created: 2025/11/25 13:25:20 by smamalig          #+#    #+#             */
+/*   Updated: 2025/11/25 14:25:55 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vector/vector_internal.h"
+#include "vector/vector.h"
 
-void	ft_vector_free(t_vector *vec)
+void	vec_free(t_vec *vec)
 {
-	ft_free(vec->data);
+	free(vec);
 }

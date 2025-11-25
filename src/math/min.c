@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 22:34:34 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/22 22:44:29 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:24:18 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "core/math.h"
 
 int	ft_min(int a, int b)
 {

@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 11:01:42 by smamalig          #+#    #+#             */
-/*   Updated: 2025/02/23 11:01:43 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:23:16 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "core/math.h"
 
 int	ft_intlen(int n)
 {

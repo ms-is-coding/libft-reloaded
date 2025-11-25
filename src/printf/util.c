@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 23:51:08 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/28 22:47:09 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:21:50 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_internal.h"
+#include "printf/printf_internal.h"
 
 int	_ft_printf_int_len(intmax_t n)
 {

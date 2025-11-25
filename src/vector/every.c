@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
-/*   every.c                                               ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
-/*                                                         ⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠁⢀⣼⣿⠟⠀   */
-/*   By: smamalig <smamalig@student.42.fr>                 ⠀⣴⣿⣟⣁⣀⣀⣀⡀⠀⣴⣿⡟⠁⢀⠀   */
-/*                                                         ⠀⠿⠿⠿⠿⠿⣿⣿⡇⠀⣿⣿⣇⣴⣿⠀   */
-/*   Created: 2025/06/04 17:49:36 by smamalig              ⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀   */
-/*   Updated: 2025/06/04 17:53:24 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
+/*                                                        :::      ::::::::   */
+/*   every.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/25 14:49:59 by smamalig          #+#    #+#             */
+/*   Updated: 2025/11/25 14:51:16 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vector/vector_internal.h"
+#include "vector/vector.h"
 
-_Bool	ft_vector_every(t_vector *vec, _Bool (*fn)(size_t, t_value))
+bool	vec_every(t_vec *v, bool (*fn)(size_t, void *, void *), void *userdata)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < vec->length)
+	while (i < v->length)
 	{
-		if (!fn(i, vec->data[(vec->offset + i) % vec->capacity]))
+		if (!fn(i, v->data[(v->offset + i) % v->capacity], userdata))
 			return (false);
 		i++;
 	}

@@ -6,11 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 16:45:24 by smamalig          #+#    #+#             */
-/*   Updated: 2025/10/28 23:00:22 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:22:10 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_printf.h"
+#include "core/stdio.h"
 #include <unistd.h>
 
 #define BUFFER_SIZE 1024

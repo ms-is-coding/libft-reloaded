@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
-/*   foreach.c                                             ⠀⠀⠀⠀⢀⣴⣿⠟⠁ ⣿⠟⢹⣿⣿⠀   */
-/*                                                         ⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠁⢀⣼⣿⠟⠀   */
-/*   By: smamalig <smamalig@student.42.fr>                 ⠀⣴⣿⣟⣁⣀⣀⣀⡀⠀⣴⣿⡟⠁⢀⠀   */
-/*                                                         ⠀⠿⠿⠿⠿⠿⣿⣿⡇⠀⣿⣿⣇⣴⣿⠀   */
-/*   Created: 2025/06/04 17:44:20 by smamalig              ⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀   */
-/*   Updated: 2025/06/04 17:49:04 by smamalig              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   */
+/*                                                        :::      ::::::::   */
+/*   foreach.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/25 14:42:52 by smamalig          #+#    #+#             */
+/*   Updated: 2025/11/25 14:46:24 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vector/vector_internal.h"
+#include "vector/vector.h"
 
-void	ft_vector_foreach(t_vector *vec, void (*fn)(size_t, t_value))
+void	vec_foreach(
+	t_vec *v,
+	void (*fn)(size_t, void *, void *),
+	void *userdata)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < vec->length)
+	while (i < v->length)
 	{
-		fn(i, vec->data[(vec->offset + i) % vec->capacity]);
+		fn(i, v->data[(v->offset + i) % v->capacity], userdata);
 		i++;
 	}
 }

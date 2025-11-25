@@ -6,12 +6,11 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 20:05:40 by smamalig          #+#    #+#             */
-/*   Updated: 2025/07/18 10:17:19 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:20:13 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_internal.h"
-#include <stdlib.h>
+#include "printf/printf_internal.h"
 
 void	_ft_printf_handle_int(t_printf_parser *p)
 {
