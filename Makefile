@@ -6,7 +6,7 @@
 #    By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 21:10:40 by smamalig          #+#    #+#              #
-#    Updated: 2025/11/25 14:42:28 by smamalig         ###   ########.fr        #
+#    Updated: 2025/12/30 12:40:37 by smamalig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,8 @@ ALLOC_SRC	:= $(shell find $(SRC_DIR)/alloc -type f -name "*.c")
 VECTOR_SRC	:= $(shell find $(SRC_DIR)/vector -type f -name "*.c")
 PRINTF_SRC	:= $(shell find $(SRC_DIR)/printf -type f -name "*.c")
 MATH_SRC	:= $(shell find $(SRC_DIR)/math -type f -name "*.c")
+
+ALL_SRC		:= $(CORE_SRC) $(ALLOC_SRC) $(VECTOR_SRC) $(PRINTF_SRC) $(MATH_SRC)
 
 CORE_OBJ	:= $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(CORE_SRC))
 ALLOC_OBJ	:= $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(ALLOC_SRC))
@@ -177,9 +179,9 @@ test:
 
 .PHONY: norm
 norm:
-	echo $(SRCS) | xargs -n1 -P$(NPROC) norminette
+	echo $(ALL_SRC) | xargs -n1 -P$(NPROC) norminette
 
 
 .PHONY: tidy
 tidy:
-	echo $(SRCS) | xargs -n1 -P$(NPROC) clang-tidy -p .
+	echo $(ALL_SRC) | xargs -n1 -P$(NPROC) clang-tidy -p .

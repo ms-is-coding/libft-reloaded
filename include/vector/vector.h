@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 12:41:34 by smamalig          #+#    #+#             */
-/*   Updated: 2025/11/25 14:49:42 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/12/30 12:39:19 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define VECTOR_H
 
 # include <stdlib.h>
+# include <stdbool.h>
 
 typedef struct s_vec	t_vec;
 
