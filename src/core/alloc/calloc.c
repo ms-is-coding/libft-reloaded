@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:52:10 by smamalig          #+#    #+#             */
-/*   Updated: 2025/11/25 16:16:44 by smamalig         ###   ########.fr       */
+/*   Updated: 2025/12/30 12:34:34 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@
 
 void	*ft_calloc(size_t n, size_t size)
 {
+	size_t	total;
 	void	*ptr;
 
-	if ((size != 0) && (n > SIZE_MAX / size))
+	if (__builtin_mul_overflow(n, size, &total))
 	{
-		errno = EOVERFLOW;
+		errno = ENOMEM;
 		return (NULL);
 	}
-	ptr = ft_malloc(n * size);
+	ptr = ft_malloc(total);
 	if (!ptr)
 		return (NULL);
-	ft_memset(ptr, 0, n * size);
+	ft_memset(ptr, 0, total);
 	return (ptr);
 }
