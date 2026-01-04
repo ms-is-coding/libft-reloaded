@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 12:41:34 by smamalig          #+#    #+#             */
-/*   Updated: 2026/01/04 17:18:30 by smamalig         ###   ########.fr       */
+/*   Updated: 2026/01/04 17:48:43 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_vec_result	vec_reserve(t_vec *v, size_t capacity);
 size_t			vec_length(const t_vec *v);
 size_t			vec_capacity(const t_vec *v);
 
-void			*vec_get(const t_vec *v, size_t idx);
+void			*vec_get(const t_vec *v, ssize_t idx);
 t_vec_result	vec_set(t_vec *v, size_t idx, void *value);
 
 t_vec_result	vec_push(t_vec *v, void *value);
