@@ -6,7 +6,7 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 12:41:34 by smamalig          #+#    #+#             */
-/*   Updated: 2025/12/30 12:39:19 by smamalig         ###   ########.fr       */
+/*   Updated: 2026/01/04 17:18:30 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ t_vec_result	vec_insert(t_vec *v, size_t idx, void *value);
 
 void			*vec_pop(t_vec *v);
 void			*vec_remove(t_vec *v, size_t index);
+
+void			vec_clear(t_vec *v);
 
 void			vec_foreach(t_vec *v,
 					void (*fn)(size_t index, void *value, void *userdata),
