@@ -6,13 +6,14 @@
 /*   By: smamalig <smamalig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 12:41:34 by smamalig          #+#    #+#             */
-/*   Updated: 2026/01/04 17:48:43 by smamalig         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:47:59 by smamalig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
 # define VECTOR_H
 
+# include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
 
